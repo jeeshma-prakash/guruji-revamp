@@ -48,6 +48,24 @@ a {
     --p-size: 1rem;
     --small-size: 0.85rem;
 }
+.hero-content{
+    align-items: center;
+    padding: 9rem 2rem;
+}
+.hero-content h1 {
+    font-size: 3.7rem;
+    font-weight: 700;
+    color: white;
+    min-height: 70px;
+}
+.hero-content p {
+    font-size: 1.6rem;
+    color: white;
+    margin-bottom: 20px;
+    margin-top: -4rem;
+
+}
+
 
 .wisdom-section {
     padding: 60px 0;
@@ -685,7 +703,7 @@ a {
 
 .membership-img {
     width: 300px;
-    margin-top: -10rem !important;
+    margin-top: -5rem !important;
 }
 
 .membership-section {
@@ -778,7 +796,7 @@ a {
     filter: drop-shadow(0 0 8px var(--primary-color));
 }
 .footer-heading {
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--primary-color);

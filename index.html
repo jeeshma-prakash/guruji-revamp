@@ -464,6 +464,14 @@
         </footer>
         </section>
 
+        <!-- WhatsApp Floating Icon & Popup -->
+<div id="whatsapp-float">
+    <div id="whatsapp-popup" class="whatsapp-popup">Chat with us</div>
+    <a href="https://api.whatsapp.com/send?phone=919993199903&text=hello" target="_blank" id="whatsapp-link" aria-label="Chat on WhatsApp">
+        <img src="assets/images/whatsapp icon.png" alt="WhatsApp" class="whatsapp-icon">
+    </a>
+</div>
+
         <script>
             // Texts for carousel
             const carouselTexts = [
@@ -497,6 +505,25 @@
                 }
             }
             if (typedEl) typeCarousel();
+
+            // WhatsApp Popup Logic
+const whatsappIcon = document.getElementById('whatsapp-float');
+const whatsappPopup = document.getElementById('whatsapp-popup');
+let popupTimeout;
+
+function showPopup() {
+    whatsappPopup.classList.add('show');
+}
+function hidePopup() {
+    whatsappPopup.classList.remove('show');
+}
+// Show popup after 5.5 seconds
+window.addEventListener('DOMContentLoaded', function() {
+    popupTimeout = setTimeout(showPopup, 5500);
+});
+// Show popup on hover
+whatsappIcon.addEventListener('mouseenter', showPopup);
+whatsappIcon.addEventListener('mouseleave', hidePopup);
         </script>
         <!-- Astrology Video Footer End -->
 
@@ -505,6 +532,7 @@
         <!-- Bootstrap Icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     </section>
+    
 </body>
 
 </html>

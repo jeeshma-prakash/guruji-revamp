@@ -779,7 +779,7 @@ a {
         }
 /* Footer Styles */
 .footer-section {
-    background: linear-gradient(135deg, #eb6e0f21 60%, #ffd77bb0 100%);
+    background: linear-gradient(135deg, #eb6e0f42 60%, #f8c245bb 100%);
     color: #030303;
     position: relative;
     overflow: hidden;
@@ -993,4 +993,11 @@ a {
     .hero-bg-video{
         opacity: 0.3;
     }
+    .membership-section {
+    background: url(../images/Untitled\ design\ -\ Copy.png) no-repeat center/cover;
+   
+}
+.membership-text{
+    text-align: center;
+}
 }

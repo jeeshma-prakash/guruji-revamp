@@ -75,10 +75,10 @@ a {
 }
 
 /* Left Content */
-.wisdom-content p.lead {
+.lead {
     color: var(--lead-color);
     margin-bottom: 5px;
-    font-size: var(--p-size);
+    font-size: 18px !important;
 }
 
 .wisdom-content h1,
@@ -565,14 +565,14 @@ a {
 }
 
 /* Right Content */
-.text-content h4 {
+/* .text-content h4 {
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 1px;
     color: var(--heading-color);
     text-transform: uppercase;
     margin-bottom: 8px;
-}
+} */
 
 .text-content h2 {
     font-size: 32px;

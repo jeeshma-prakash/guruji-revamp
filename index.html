@@ -11,64 +11,22 @@
 </head>
 
 <body>
-    <section class="hero-section position-relative" style="overflow: hidden;background: url(assets/images/grji-banner-home.png) no-repeat center/cover;height: 80vh;">
-        <!-- Background Video -->
-        <!-- <video class="hero-bg-video position-absolute w-100 h-100" style="object-fit: cover; left: 0; top: 0; z-index: 0; "
-            autoplay loop muted playsinline>
-            <source src="assets/videos/hero-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video> -->
-        <!-- Overlay -->
-        <!-- <div class="hero-overlay position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.499); left: 0; top: 0; z-index: 1;"></div>
-        <div class="container position-relative" style="z-index: 2;">
-            <div class="row align-items-center"> -->
+    <section class="hero-section position-relative d-flex align-items-center" style="overflow: hidden; background: url(assets/images/grji-banner-home.png) no-repeat center/cover; height: 80vh; min-height: 400px;">
+        <div class="container position-relative h-100">
+            <div class="row h-100 align-items-center">
                 <!-- Left Content -->
-                <div class="col-lg-8 hero-content">
-                    <h1 class="typed-carousel" style="min-height: 3.5em;"></h1>
-                    <p>*Prashanna *Prediction *Occult</p>
+                <div class="col-lg-7 col-md-10 mx-auto d-flex flex-column justify-content-center hero-content text-start text-white" style="min-height: 350px;">
+                    <h1 class="typed-carousel display-4 fw-bold mb-3" style="min-height: 3.5em;"></h1>
+                    <p class="lead mb-4">*Prashanna *Prediction *Occult</p>
                     <a href="#" class="btn-custom">Read more</a>
                 </div>
-
-                <!-- Right Image -->
-                <!-- <div class="col-lg-6 text-center">
+                <!-- Right Image (optional, uncomment if needed) -->
+                <!-- <div class="col-lg-5 d-none d-lg-block text-center">
                     <img src="assets/images/hero-img.png" alt="Hero Image" class="img-fluid hero-img">
                 </div> -->
             </div>
         </div>
-        <script>
-        // Texts for carousel
-        const carouselTexts = [
-            "Discover the Path to Inner Peace with Guruji",
-            "Align your energy with the universe",
-            "Transform Your Journey with Spiritual Guidance",
-            "Discover the power of planets in your life"
-        ];
-        const typedEl = document.querySelector('.typed-carousel');
-        let textIdx = 0,
-            charIdx = 0,
-            isDeleting = false;
-
-        function typeCarousel() {
-            const current = carouselTexts[textIdx];
-            let display = current.substring(0, charIdx);
-            typedEl.textContent = display;
-            if (!isDeleting && charIdx < current.length) {
-                charIdx++;
-                setTimeout(typeCarousel, 80);
-            } else if (isDeleting && charIdx > 0) {
-                charIdx--;
-                setTimeout(typeCarousel, 40);
-            } else if (!isDeleting && charIdx === current.length) {
-                isDeleting = true;
-                setTimeout(typeCarousel, 1200);
-            } else if (isDeleting && charIdx === 0) {
-                isDeleting = false;
-                textIdx = (textIdx + 1) % carouselTexts.length;
-                setTimeout(typeCarousel, 400);
-            }
-        }
-        if (typedEl) typeCarousel();
-        </script>
+       
     </section>
     <section class="wisdom-section mt-5">
         <div class="container">
@@ -137,7 +95,7 @@
             <div class="row guruji-prediction">
                 <div class="col-lg-4 predict-1">
                     <h2>About corona</h2>
-                    <p>In 2020, Guruji Murali Mohan predicted on his website that the world would face a crisis, people
+                    <p>In 2020, Guruji Murali Mohan predicted that the world would face a crisis, people
                         would live in fear, and the country's economy would regress, foreseeing the corona period in
                         advance.</p>
                 </div>
@@ -207,7 +165,7 @@
             <div class="row align-items-center">
                 <!-- Left Text -->
                 <div class="col-lg-5 mb-4 mb-lg-0">
-                    <h3><strong>what followers say</strong></h3>
+                    <h3><strong>What followers say</strong></h3>
                     <p class="text-muted">
                         At Guruji, every seeker walks a unique path guided by divine wisdom. Our devotees’ heartfelt
                         experiences reflect the peace, clarity, and blessings they’ve received through Guruji’s
@@ -217,7 +175,7 @@
                 </div>
 
                 <!-- Right Testimonials -->
-                <div class="col-lg-7">
+                <div class="col-lg-7 test">
                     <div class="testimonial-card">
                         <img src="assets/images/test-1.jpg" alt="Dr. B. Gobinath, BHMS">
                         <div>
@@ -383,11 +341,11 @@
         <div class="container">
             <div class="row align-items-center">
                 <!-- Right Image -->
-                <div class="col-lg-6 text-center member">
+                <div class="col-lg-4 text-center member">
                     <img src="assets/images/guruji-removebg-preview.png" alt="Membership" class="img-fluid membership-img">
                 </div>
                 <!-- Left Text -->
-                <div class="col-lg-6 membership-text">
+                <div class="col-lg-8 membership-text">
                     <h2>Join Our Spiritual Community</h2>
                     <p>Become a member to deepen your spiritual journey with exclusive access to events, workshops, and
                         personalized guidance from Guruji.</p>
@@ -485,6 +443,41 @@
                 </div>
             </div>
         </footer>
+
+         <script>
+        // Texts for carousel
+        const carouselTexts = [
+            "Discover the Path to Inner Peace with Guruji",
+            "Align your energy with the universe",
+            "Transform Your Journey with Spiritual Guidance",
+            "Discover the power of planets in your life"
+        ];
+        const typedEl = document.querySelector('.typed-carousel');
+        let textIdx = 0,
+            charIdx = 0,
+            isDeleting = false;
+
+        function typeCarousel() {
+            const current = carouselTexts[textIdx];
+            let display = current.substring(0, charIdx);
+            typedEl.textContent = display;
+            if (!isDeleting && charIdx < current.length) {
+                charIdx++;
+                setTimeout(typeCarousel, 80);
+            } else if (isDeleting && charIdx > 0) {
+                charIdx--;
+                setTimeout(typeCarousel, 40);
+            } else if (!isDeleting && charIdx === current.length) {
+                isDeleting = true;
+                setTimeout(typeCarousel, 1200);
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                textIdx = (textIdx + 1) % carouselTexts.length;
+                setTimeout(typeCarousel, 400);
+            }
+        }
+        if (typedEl) typeCarousel();
+        </script>
         <!-- Astrology Video Footer End -->
 
         <!-- Bootstrap JS -->

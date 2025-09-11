@@ -257,7 +257,7 @@ a {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 769px) {
     .wisdom-section {
         padding: 30px 0;
         background-size: cover;
@@ -309,8 +309,8 @@ a {
     }
 
     .rotating-bg {
-        width: 220px;
-        height: 220px;
+        width: 520px !important;
+        height: 520px !important;
     }
 
     .predict-img {
@@ -355,13 +355,22 @@ a {
     }
 
     .rotating-bg {
-        width: 220px;
-        height: 220px;
+        width: 320px !important;
+        height: 320px !important;
     }
 
     .predict-img {
         width: 240px;
         height: 240px;
+    }
+    .test{
+        padding: 0 !important;
+    }
+    .testimonial-card{
+        padding: 10px !important;
+    }
+    .testimonial-card p{
+        font-size: 12px !important;
     }
 }
 
@@ -597,6 +606,7 @@ a {
 @media (max-width: 900px) {
     .section-container {
         grid-template-columns: 1fr;
+         background: url(../images/asram-sec.png) no-repeat right center/cover;
     }
 }
 
@@ -853,5 +863,63 @@ a {
     .footer-copyright, .footer-design {
         text-align: center !important;
         width: 100% !important;
+    }
+}
+
+/* Responsive Hero Section Styles */
+.hero-section {
+    color: #fff;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+}
+.hero-content {
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.typed-carousel {
+    font-size: 2.2rem;
+}
+@media (max-width: 991px) {
+    .hero-section {
+        height: 60vh;
+        min-height: 300px;
+    }
+    .typed-carousel {
+        font-size: 1.6rem;
+    }
+    .hero-content {
+        min-height: 220px;
+    }
+}
+@media (max-width: 767px) {
+    .hero-section {
+        height: 45vh;
+        min-height: 180px;
+    }
+    .typed-carousel {
+        font-size: 1.2rem;
+    }
+    .hero-content {
+        min-height: 120px;
+        padding: 0 10px;
+    }
+}
+@media (max-width: 575px) {
+    .hero-section {
+        height: 32vh;
+        min-height: 120px;
+    }
+    .typed-carousel {
+        font-size: 1rem;
+        
+    }
+    .hero-content {
+        min-height: 80px;
+        padding: 0 5px;
+    }
+    .hero-content p{
+        margin-top: 1rem;
     }
 }

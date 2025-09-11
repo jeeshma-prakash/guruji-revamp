@@ -53,7 +53,7 @@ a {
     padding: 9rem 2rem;
 }
 .hero-content h1 {
-    font-size: 3.7rem;
+    font-size: 3.9rem;
     font-weight: 700;
     color: white;
     min-height: 70px;
@@ -70,6 +70,7 @@ a {
 .wisdom-section {
     padding: 60px 0;
     background: url(../images/Untitled\ design.png) no-repeat center/cover;
+    margin-top: 3rem;
 }
 
 /* Left Content */
@@ -327,6 +328,7 @@ a {
 @media (max-width: 480px) {
     .wisdom-section {
         padding: 18px 0;
+        margin-top: 0 !important;
     }
 
     .wisdom-content h1 {
@@ -876,7 +878,7 @@ a {
 }
 .hero-content {
     z-index: 2;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.397);
 }
 .typed-carousel {
     font-size: 2.2rem;
@@ -921,5 +923,74 @@ a {
     }
     .hero-content p{
         margin-top: 1rem;
+    }
+}
+
+/* Hero Section Video Background */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    height: 80vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+.hero-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+.hero-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(120deg, rgba(60, 58, 30, 0.411) 0%, rgba(60, 30, 60, 0.171) 60%, rgba(0, 0, 0, 0.075) 100%);
+    pointer-events: none;
+}
+.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 50vh;
+        min-height: 250px;
+         background: url(../images/grj-removebg-preview.png) no-repeat center/cover !important;
+    }
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+      .hero-bg-video{
+        opacity: 0.2;
+    }
+    .hero-gradient-overlay {
+   
+    background: linear-gradient(120deg, rgba(114, 89, 9, 0.295) 0%, rgba(241, 135, 15, 0.212) 60%, rgba(0, 0, 0, 0.26) 100%);
+}
+}
+@media (max-width: 480px) {
+    .hero-section {
+        height: 35vh;
+        min-height: 180px;
+        background: url(../images/grj-removebg-preview.png) no-repeat center/cover !important;
+    }
+    .hero-content h1 {
+        font-size: 2.9rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+       
+    }
+    .hero-bg-video{
+        opacity: 0.3;
     }
 }

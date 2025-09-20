@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>occult class</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --dark-orange: #b85c2f;
+            --light-orange: #ff9933;
+            --text-color: #333;
+            --bg-color: #f0f4f8;
+        }
+
+        .main-section {
+            padding: 50px 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .enroll-form-card,
+        .package-card {
+            background-color: #fff;
+        }
+
+        .form-header,
+        .package-header {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            padding-bottom: 20px;
+        }
+
+        .form-header .highlight,
+        .package-header .highlight {
+            color: var(--dark-orange);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 0.5rem;
+            border: 1px solid #ddd;
+            padding: 0.75rem 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--dark-orange);
+            box-shadow: 0 0 0 0.25rem rgba(255, 102, 0, 0.25);
+        }
+
+        .btn-prime {
+            background: linear-gradient(185deg, var(--dark-orange), var(--light-orange), var(--dark-orange));
+            border-color: var(--dark-orange);
+            color: #ffffff;
+            width: 50%;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+
+        .btn-prime:hover {
+            background-color: #e65c00;
+            border-color: #e65c00;
+            transform: translateY(-2px);
+            color: #ddd;
+        }
+
+        .package-details {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .price-circle {
+            background: linear-gradient(135deg, var(--light-orange), var(--dark-orange));
+            color: #fff;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 2rem;
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .package-info .list-group-item {
+            border: none;
+            background-color: transparent;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .package-info .list-group-item svg {
+            color: var(--dark-orange);
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .class-hero {
+            position: relative;
+            width: 100%;
+            min-height: 450px;
+            background: url('assets/images/class heo.jpeg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .class-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(12, 9, 6, 0.607);
+            z-index: 1;
+        }
+
+        .class-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+        }
+
+        .class-hero-title {
+            font-size: 7rem !important;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 0;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        @media (max-width: 600px) {
+            .class-hero {
+                min-height: 180px;
+            }
+        }
+
+        @media (max-width: 670px) {
+            .class-hero-title {
+                font-size: 4rem !important;
+            }
+        }
+
+        .fullbg {
+            background: url(assets/images/Untitled\ design.png);
+        }
+
+        .occult-classes {
+            background: linear-gradient(135deg, #ffffff, #f7e1b6);
+        }
+
+        .occult-classes h2 {
+            color: var(--dark-orange);
+            font-weight: 700;
+            margin-bottom: .9rem;
+        }
+
+        .head h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-orange);
+        }
+
+         :root {
+            --text-gold: #e0b466;
+            /* Adjust this gold color to your preference */
+            --button-bg: #4a4a4a;
+            /* Dark button background */
+            --button-text: #f5f5f5;
+            --border-gold: #e0b466;
+        }
+
+         .cosmic-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            /* Takes full viewport height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+            /* Add some padding for smaller screens */
+            overflow: hidden;
+            /* Ensure content doesn't spill out */
+        }
+
+        .cosmic-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1518002175952-62b1664d9744?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            /* Replace with your desired background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.3);
+            /* Make the background image darker */
+            z-index: -1;
+            /* Place behind content */
+        }
+
+        .cosmic-content-wrapper {
+            background-color: rgba(249, 231, 173, 0.297);
+            /* Semi-transparent dark overlay for content */
+            padding: 3rem;
+            border-radius: 0.8rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.147);
+            border: 1px solid var(--border-gold);
+            /* Gold border for the entire content wrapper */
+        }
+
+        .image-col {
+            position: relative;
+            padding-right: 2rem;
+            /* Space between image and text */
+        }
+
+        .image-container {
+            position: relative;
+            padding-bottom: 75%;
+            /* Aspect ratio 4:3 (height / width * 100) */
+            height: 0;
+            overflow: hidden;
+            border: 2px solid var(--border-gold);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.097);
+        }
+
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensure image covers the area without distortion */
+            display: block;
+        }
+
+        .text-col {
+            padding-left: 2rem;
+            /* Space between text and image */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .main-heading {
+            font-size: 3.5rem;
+            /* Larger font size */
+            color: var(--text-gold);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .sub-text {
+            font-size: 1.1rem;
+            color: #000000;
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+
+            /* Bootstrap's 'lg' breakpoint */
+            .cosmic-content-wrapper {
+                padding: 2rem;
+            }
+
+            .image-col,
+            .text-col {
+                padding: 1rem 0;
+                /* Adjust padding for stacked columns */
+            }
+
+            .image-col {
+                order: 1;
+                /* Puts image above text on small screens */
+            }
+
+            .text-col {
+                order: 2;
+                text-align: center;
+                /* Center text on small screens */
+            }
+
+            .main-heading {
+                font-size: 2.5rem;
+                margin-top: 1rem;
+            }
+
+            .sub-text {
+                font-size: 1rem;
+            }
+
+            .read-button {
+                align-self: center;
+                /* Center button on small screens */
+            }
+
+            .entroll {
+                flex-direction: row-reverse;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+
+            /* Bootstrap's 'md' breakpoint */
+            .main-heading {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+
+            /* Bootstrap's 'sm' breakpoint */
+            .cosmic-content-wrapper {
+                padding: 1.5rem;
+            }
+
+            .main-heading {
+                font-size: 1.8rem;
+            }
+
+            .sub-text {
+                font-size: 0.9rem;
+            }
+
+            .read-button {
+                padding: 0.6rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <div class="class-hero">
+            <div class="class-hero-content">
+                <h1 class="class-hero-title">Occult Class</h1>
+            </div>
+        </div>
+    </section>
+    <section class="fullbg">
+        <section class="cosmic-section">
+            <div class="container cosmic-content-wrapper">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 image-col">
+                        <div class="image-container">
+                            <img src="assets/images/occult-class-sec.jpeg" alt="Tarot cards and spiritual items">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-col">
+                        <h2 class="main-heading">Our occult Class</h2>
+                        <p class="sub-text">
+                            Occult Astrology is a deeper, esoteric branch of astrology that goes beyond daily horoscopes
+                            or personality traits. Instead of just predicting events, it focuses on the hidden,
+                            spiritual, and mystical aspects of planetary influence. It views the zodiac, planets, and
+                            cosmic energies as keys to unlocking higher wisdom, soul purpose, and spiritual evolution.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5">
+            <div class="container">
+                <div class="text-center mb-5 pb-5 head">
+                    <h2>What you will Learn</h2>
+                </div>
+                <div class="row justify-content-center g-4">
+                    <!-- Card 1: Kaali Uphasana Class -->
+                    <div class="col-lg-6">
+                        <div class="card h-100 occult-classes">
+                            <div class="card-body p-4">
+                                <h2>Kaali Uphasana Class</h2>
+                                <p>Kaali Uphasana is a 12-day worship practice that can only be performed after
+                                    receiving
+                                    direct
+                                    initiation (Deeksha) from gurus who have formally received Kaali Aghora Mantra
+                                    Deeksha.
+                                    For
+                                    women, this practice must be done without looking at men's faces, and for men,
+                                    without
+                                    looking
+                                    at women's faces. Those who complete this Kaali Uphasana will gain the ability to
+                                    ward
+                                    off all
+                                    kinds of evil forces with just a single gooseberry (idumbi fruit). Evil forces will
+                                    flee
+                                    in fear
+                                    at their sight, and Goddess Kaali will always stand by their side. By learning this
+                                    method, you
+                                    can perform all forms of benevolent occult practices.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Agasthyamuni Uphasana Class -->
+                    <div class="col-lg-6">
+                        <div class="card h-100 occult-classes">
+                            <div class="card-body p-4">
+                                <h2>Agasthyamuni Uphasana Class</h2>
+                                <p>Agasthyamuni Uphasana is an 11-day worship practice that can be performed either at
+                                    your
+                                    home or
+                                    by staying at our ashram. In this class, participants can learn all levels of occult
+                                    practices—beginner, intermediate, and advanced—as well as tantric methods.
+                                    Additionally, you can
+                                    learn mantras and yantras to resolve all kinds of problems faced by people. To
+                                    participate in
+                                    this class, you must stay at our ashram for four days, or you can study online for
+                                    one
+                                    hour
+                                    daily over a month. The fee for learning Agasthyamuni mantras and yantras is 60,000
+                                    rupees </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Prediction Classes -->
+                    <div class="col-lg-6">
+                        <div class="card h-100 occult-classes">
+                            <div class="card-body p-4">
+                                <h2>Prediction Classes</h2>
+                                <p>This class enables participants to accurately predict past events, current
+                                    situations,
+                                    and future
+                                    occurrences for those who visit us. The class includes eight types of prediction
+                                    methods, such
+                                    as cowrie divination (Sozhi Prasannam) and scrying with ink. This class can only be
+                                    learned by
+                                    staying at the ashram for two days and cannot be taken online.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-section">
+            <div class="container">
+                <div class="text-center mb-5 pb-5 head">
+                    <h2>Price Packages</h2>
+                </div>
+                <div class="row g-4 justify-content-center align-items-stretch entroll">
+                    <div class="col-lg-4">
+                        <div class="card p-4 package-card h-100">
+                            <h2 class="package-header"> <span class="highlight">Kaali Uphasana</span></h2>
+                            <div class="package-details">
+                                <div class="price-circle">
+                                    ₹30,000
+                                </div>
+                                <h4 class="mb-4"> Class Package</h4>
+                                <ul class="list-group list-group-flush package-info">
+                                    <li class="list-group-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+                                        </svg>
+                                        Kaali Uphasana methods
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+                                        </svg>
+                                        benevolent occult practices
+                                    </li>
+                                </ul>
+                                <div class="mt-4">
+                                    <button class="btn btn-prime w-100">Purchase Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card p-4 package-card h-100">
+                            <h2 class="package-header"><span class="highlight">Agasthyamuni</span></h2>
+                            <div class="package-details">
+                                <div class="price-circle">
+                                    ₹60,000
+                                </div>
+                                <h4 class="mb-4"> Class Package</h4>
+                                <ul class="list-group list-group-flush package-info">
+                                    <li class="list-group-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+                                        </svg>
+                                        initiation and all lessons
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+                                        </svg>
+                                        book provided
+                                    </li>
+                                </ul>
+                                <div class="mt-4">
+                                    <button class="btn btn-prime w-100">Purchase Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card p-4 package-card h-100">
+                            <h2 class="package-header"><span class="highlight">Prediction</span></h2>
+                            <div class="package-details">
+                                <div class="price-circle">
+                                    ₹30,000
+                                </div>
+                                <h4 class="mb-4"> Class Package</h4>
+                                <ul class="list-group list-group-flush package-info">
+                                    <li class="list-group-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+                                        </svg>
+                                        includes all aforementioned classes
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+                                        </svg>
+                                        offline class only
+                                    </li>
+                                </ul>
+                                <div class="mt-4">
+                                    <button class="btn btn-prime w-100">Purchase Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="main-section">
+            <div class="container">
+                <div class="row g-4 justify-content-center align-items-stretch entroll">
+                    <div class="col-lg-12">
+                        <div class="card p-4 enroll-form-card h-100">
+                            <h2 class="form-header">Enroll <span class="highlight">Now</span></h2>
+                            <form id="enrollmentForm">
+                                <div class="row g-3 mt-2">
+                                    <div class="col-md-6">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select id="gender" class="form-select">
+                                            <option selected>--Select--</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="package" class="form-label">Package</label>
+                                        <select id="package" class="form-select">
+                                            <option selected>--Select--</option>
+                                            <option value="numerology">Numerology Class Package</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="state" class="form-label">State Of Birth</label>
+                                        <input type="text" id="state" class="form-control"
+                                            placeholder="State Of Birth" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="dob" class="form-label">Date (DD/MM/YYYY)</label>
+                                        <div class="row g-2">
+                                            <div class="col">
+                                                <input type="text" class="form-control" placeholder="Day">
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" placeholder="Month">
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" placeholder="Year">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-5 d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-prime">Get Now</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <footer class="footer-section position-relative mt-5">
+        <!-- <video class="footer-bg-video" autoplay loop muted playsinline>
+            <source src="assets/videos/footer-bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video> -->
+        <div class="footer-overlay"></div>
+        <div class="container py-5 position-relative">
+            <div class="row text-white">
+                <!-- Column 1: Logo & Paragraph -->
+                <div class="col-md-3 mb-4 mb-md-0 d-flex flex-column align-items-md-start align-items-center">
+                    <img src="assets/images/logo.png" alt="Guruji Logo" class="footer-logo mb-3" style="width: 170px;">
+                    <p class="footer-desc text-center text-md-start">Guiding you to inner peace and cosmic wisdom
+                        through astrology and spirituality.</p>
+                </div>
+                <!-- Column 2: Links -->
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 class="footer-heading">quick links</h5>
+                    <ul class="footer-list">
+                        <li><a href="#">about guruji</a></li>
+                        <li><a href="#">guruji Ahram</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Guruji prediction</a></li>
+                        <li><a href="#">Classes</a></li>
+                        <li><a href="#">Shop</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Links -->
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 class="footer-heading">Our Services</h5>
+                    <ul class="footer-list">
+                        <li><a href="#">Astrology</a></li>
+                        <li><a href="#">numerology</a></li>
+                        <li><a href="#">Occult Culture</a></li>
+                        <li><a href="#">prashanna/predictions</a></li>
+                        <li><a href="#">Dosha Parihara</a></li>
+                        <li><a href="#">Vaastu</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Get in Touch -->
+                <div class="col-md-3">
+                    <h5 class="footer-heading">Get in Touch</h5>
+                    <ul class="footer-contact">
+                        <li><i class="bi bi-geo-alt"></i>Jyothipeedam, Bustop, 43 & 44, Near, Rayakotta Rd,
+                            Chenathur, Tamil Nadu 635109</li>
+                        <li><i class="bi bi-envelope"></i> <a href="mailto:info@guruji.com">grjihosur@gmail.com</a>
+                        </li>
+                        <li><i class="bi bi-telephone"></i> <a href="tel:+919876543210">99931 99903</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container position-relative">
+            <hr class="footer-hr">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center py-2">
+                <div class="footer-copyright text-start w-100 w-md-auto mb-2 mb-md-0">&copy; 2024 Guruji. All rights
+                    reserved.</div>
+                <div class="footer-design text-end w-100 w-md-auto">Website designed by <a href="https://brinit.in/"
+                        target="_blank" class="footer-designer">Brin'IT</a></div>
+            </div>
+        </div>
+    </footer>
+    </section>
+
+    <!-- WhatsApp Floating Icon & Popup -->
+    <div id="whatsapp-float">
+        <div id="whatsapp-popup" class="whatsapp-popup">Chat with us</div>
+        <a href="https://api.whatsapp.com/send?phone=919993199903&text=hello" target="_blank" id="whatsapp-link"
+            aria-label="Chat on WhatsApp">
+            <img src="assets/images/whatsapp icon.png" alt="WhatsApp" class="whatsapp-icon">
+        </a>
+    </div>
+
+    <script>
+        // WhatsApp Popup Logic
+        const whatsappIcon = document.getElementById('whatsapp-float');
+        const whatsappPopup = document.getElementById('whatsapp-popup');
+        let popupTimeout;
+
+        function showPopup() {
+            whatsappPopup.classList.add('show');
+        }
+        function hidePopup() {
+            whatsappPopup.classList.remove('show');
+        }
+        // Show popup after 5.5 seconds
+        window.addEventListener('DOMContentLoaded', function () {
+            popupTimeout = setTimeout(showPopup, 5500);
+        });
+        // Show popup on hover
+        whatsappIcon.addEventListener('mouseenter', showPopup);
+        whatsappIcon.addEventListener('mouseleave', hidePopup);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

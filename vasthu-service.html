@@ -4,370 +4,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>vaastu class</title>
+    <title>Vaastu Services</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
-        :root {
-            --dark-orange: #b85c2f;
-            --light-orange: #ff9933;
-            --text-color: #333;
-            --bg-color: #f0f4f8;
-        }
-
-        .main-section {
-            padding: 50px 0;
-        }
-
-        .card {
-            border: none;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .enroll-form-card,
-        .package-card {
-            background-color: #fff;
-        }
-
-        .form-header,
-        .package-header {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            padding-bottom: 20px;
-        }
-
-        .form-header .highlight,
-        .package-header .highlight {
-            color: var(--dark-orange);
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        .form-control,
-        .form-select {
-            border-radius: 0.5rem;
-            border: 1px solid #ddd;
-            padding: 0.75rem 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: var(--dark-orange);
-            box-shadow: 0 0 0 0.25rem rgba(255, 102, 0, 0.25);
-        }
-
-        .btn-prime {
-            background: linear-gradient(185deg, var(--dark-orange), var(--light-orange), var(--dark-orange));
-            border-color: var(--dark-orange);
-            color: #ffffff;
-            font-weight: 600;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-
-        .btn-prime:hover {
-            background-color: #e65c00;
-            border-color: #e65c00;
-            transform: translateY(-2px);
-            color: #ddd;
-        }
-
-        .package-details {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .price-circle {
-            background: linear-gradient(135deg, var(--light-orange), var(--dark-orange));
-            color: #fff;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 0 auto 2rem;
-            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
+            :root {
+                --dark-orange: #b85c2f;
+                --light-orange: #ff9933;
+                --text-color: #333;
+                --bg-color: #f0f4f8;
+                --text-gold: #e0b466;
+                --button-bg: #4a4a4a;
+                --button-text: #f5f5f5;
+                --border-gold: #e0b466;
             }
 
-            50% {
-                transform: scale(1.05);
+            /* Layout */
+            .main-section {
+                padding: 50px 0;
             }
 
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .package-info .list-group-item {
-            border: none;
-            background-color: transparent;
-            font-size: 1.1rem;
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .package-info .list-group-item svg {
-            color: var(--dark-orange);
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
-        }
-
-        :root {
-            --text-gold: #e0b466;
-            /* Adjust this gold color to your preference */
-            --button-bg: #4a4a4a;
-            /* Dark button background */
-            --button-text: #f5f5f5;
-            --border-gold: #e0b466;
-        }
-
-        .fullbg {
-            background: url(assets/images/Untitled\ design.png);
-        }
-
-        .cosmic-section {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            /* Takes full viewport height */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 0;
-            /* Add some padding for smaller screens */
-            overflow: hidden;
-            /* Ensure content doesn't spill out */
-        }
-
-        .cosmic-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1518002175952-62b1664d9744?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            /* Replace with your desired background image */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: brightness(0.3);
-            /* Make the background image darker */
-            z-index: -1;
-            /* Place behind content */
-        }
-
-        .cosmic-content-wrapper {
-            background-color: rgba(249, 231, 173, 0.297);
-            /* Semi-transparent dark overlay for content */
-            padding: 3rem;
-            border-radius: 0.8rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.147);
-            border: 1px solid var(--border-gold);
-            /* Gold border for the entire content wrapper */
-        }
-
-        .image-col {
-            position: relative;
-            padding-right: 2rem;
-            /* Space between image and text */
-        }
-
-        .image-container {
-            position: relative;
-            padding-bottom: 75%;
-            /* Aspect ratio 4:3 (height / width * 100) */
-            height: 0;
-            overflow: hidden;
-            border: 2px solid var(--border-gold);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.097);
-        }
-
-        .image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Ensure image covers the area without distortion */
-            display: block;
-        }
-
-        .text-col {
-            padding-left: 2rem;
-            /* Space between text and image */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .main-heading {
-            font-size: 3.5rem;
-            /* Larger font size */
-            color: var(--text-gold);
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        .sub-text {
-            font-size: 1.1rem;
-            color: #000000;
-            margin-bottom: 2rem;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 991.98px) {
-
-            /* Bootstrap's 'lg' breakpoint */
-            .cosmic-content-wrapper {
-                padding: 2rem;
+            .card {
+                border: none;
+                border-radius: 1rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                overflow: hidden;
+                margin-bottom: 30px;
             }
 
-            .image-col,
-            .text-col {
-                padding: 1rem 0;
-                /* Adjust padding for stacked columns */
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
             }
 
-            .image-col {
-                order: 1;
-                /* Puts image above text on small screens */
+            .enroll-form-card,
+            .package-card {
+                background-color: #fff;
             }
 
-            .text-col {
-                order: 2;
+            .form-header,
+            .package-header {
                 text-align: center;
-                /* Center text on small screens */
-            }
-
-            .main-heading {
-                font-size: 2.5rem;
-                margin-top: 1rem;
-            }
-
-            .sub-text {
-                font-size: 1rem;
-            }
-
-            .read-button {
-                align-self: center;
-                /* Center button on small screens */
-            }
-
-            .entroll {
-                flex-direction: row-reverse;
-            }
-        }
-
-        @media (max-width: 767.98px) {
-
-            /* Bootstrap's 'md' breakpoint */
-            .main-heading {
                 font-size: 2rem;
+                font-weight: 700;
+                padding-bottom: 20px;
             }
-        }
 
-        @media (max-width: 575.98px) {
+            .highlight { color: var(--dark-orange); }
 
-            /* Bootstrap's 'sm' breakpoint */
+            .form-label {
+                font-weight: 600;
+                color: var(--text-color);
+            }
+
+            .form-control,
+            .form-select {
+                border-radius: 0.5rem;
+                border: 1px solid #ddd;
+                padding: 0.75rem 1rem;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .form-control:focus,
+            .form-select:focus {
+                border-color: var(--dark-orange);
+                box-shadow: 0 0 0 0.25rem rgba(255, 102, 0, 0.15);
+            }
+
+            .btn-prime {
+                background: linear-gradient(185deg, var(--dark-orange), var(--light-orange));
+                border-color: var(--dark-orange);
+                color: #ffffff;
+                font-weight: 600;
+                border-radius: 0.5rem;
+                padding: 0.75rem 1.5rem;
+                transition: background-color 0.25s ease, transform 0.15s ease;
+            }
+
+            .btn-prime:hover {
+                background-color: #e65c00;
+                border-color: #e65c00;
+                transform: translateY(-2px);
+                color: #fff;
+            }
+
+            /* small visual helpers */
+                .vasthu-class { margin-top: 0; }
+                /* legacy .entroll class intentionally removed to simplify layout */
+
+            .fullbg { background: url("assets/images/Untitled design.png") no-repeat center/cover; }
+
+            .cosmic-section {
+                position: relative;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 60px 0;
+                overflow: hidden;
+            }
+
+            .cosmic-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('https://images.unsplash.com/photo-1518002175952-62b1664d9744?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                filter: brightness(0.3);
+                z-index: -1;
+            }
+
             .cosmic-content-wrapper {
-                padding: 1.5rem;
+                background-color: rgba(249, 231, 173, 0.27);
+                padding: 3rem;
+                border-radius: 0.8rem;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+                border: 1px solid var(--border-gold);
             }
 
-            .main-heading {
-                font-size: 1.8rem;
+            .image-container { border: 2px solid var(--border-gold); box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+
+            .main-heading { font-size: 3.5rem; color: var(--text-gold); line-height: 1.2; margin-bottom: 1.5rem; }
+            .sub-text { font-size: 1.1rem; color: #000; margin-bottom: 2rem; }
+
+            /* Responsive Adjustments */
+            @media (max-width: 991.98px) {
+                .cosmic-content-wrapper { padding: 2rem; }
+                .main-heading { font-size: 2.5rem; }
             }
 
-            .sub-text {
-                font-size: 0.9rem;
+            @media (max-width: 767.98px) {
+                .main-heading { font-size: 2rem; }
             }
 
-            .read-button {
-                padding: 0.6rem 2rem;
-                font-size: 1rem;
+            @media (max-width: 575.98px) {
+                .cosmic-content-wrapper { padding: 1.5rem; }
+                .main-heading { font-size: 1.8rem; }
+                .sub-text { font-size: 0.95rem; }
             }
-        }
 
+            .class-hero { position: relative; width: 100%; min-height: 450px; background: url('assets/images/serviceherbg.jpeg') no-repeat center center/cover; display:flex; align-items:center; justify-content:center; }
+            .class-hero::before { content: ''; position:absolute; inset:0; background: rgba(12,9,6,0.6); z-index:1; }
+            .class-hero-content { position: relative; z-index:2; text-align:center; color:#fff; width:100%; }
+            .class-hero-title { font-size: 7rem !important; font-weight:800; letter-spacing:2px; margin-bottom:0; text-shadow: 0 2px 12px rgba(0,0,0,0.25); }
 
-        .class-hero {
-            position: relative;
-            width: 100%;
-            min-height: 450px;
-            background: url('assets/images/class\ heo.jpeg') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+            @media (max-width: 670px) { .class-hero-title { font-size: 4rem !important; } }
 
-        .class-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(12, 9, 6, 0.607);
-            z-index: 1;
-        }
-
-        .class-hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: #fff;
-            width: 100%;
-        }
-
-        .class-hero-title {
-            font-size: 7rem !important;
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin-bottom: 0;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
-        }
-
-        @media (max-width: 600px) {
-            .class-hero {
-                min-height: 180px;
+            /* vaastu class card */
+            .vasthu-class-card {
+                background: #e0b3661f;
+                backdrop-filter: blur(6px);
+                padding: 2.5rem;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+                border-radius: 1rem;
+                height: 100%;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                gap: 1rem;
             }
-        }
 
-        @media (max-width: 670px) {
-            .class-hero-title {
-                font-size: 4rem !important;
+            /* Make form inputs stack on small screens */
+            @media (max-width: 575.98px) {
+                .enroll-form-card .row > .col-md-6 { width: 100%; }
+                .vasthu-class-card { padding: 1.5rem; }
             }
-        }
-    </style>
+
+            .vasthu-heading { padding-bottom: 1rem; color: var(--dark-orange); font-weight:700; font-size: 2rem; }
+        </style>
 </head>
 
 <body>
@@ -379,67 +191,74 @@
         </div>
     </section>
     <section class="fullbg">
-        <section class="cosmic-section">
-            <div class="container cosmic-content-wrapper">
+        <section class="cosmic-section mt-5">
+            <div class="container cosmic-content-wrapper mt-5">
                 <div class="row align-items-center">
                     <div class="col-lg-7 text-col">
-                        <h2 class="main-heading text-center">about Vaastu</h2>
+                        <h2 class="main-heading text-center">About Vaastu</h2>
                         <p class="sub-text">
-                 Vastu (or Vastu Shastra) is the ancient Indian science of architecture and space design, which guides how buildings, homes, and rooms should be constructed and arranged to create harmony with nature and cosmic energies.
+                            Vastu (or Vastu Shastra) is the ancient Indian science of architecture and space design,
+                            which guides how buildings, homes, and rooms should be constructed and arranged to create
+                            harmony with nature and cosmic energies.
                         </p>
                     </div>
                     <div class="col-lg-5 image-col">
                         <div class="image-container">
-                            <img src="assets/images/prediction-service.png" alt="Tarot cards and spiritual items">
+                            <img src="assets/images/Commercial & Industrial Vastu.jpg" alt="Tarot cards and spiritual items" class="img-fluid">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="main-section">
-            <div class="container">
-                <div class="row g-4 justify-content-center align-items-stretch entroll">
-
-
-
-                    <div class="col-lg-12">
-                        <div class="card p-4 enroll-form-card h-100">
-                            <h2 class="form-header">Get <span class="highlight">You Vaastu</span></h2>
-                            <form id="enrollmentForm">
-                                <div class="row g-3 mt-2">
-                                    <div class="col-md-6">
-                                        <label for="firstName" class="form-label"> Name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="Full Name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="state" class="form-label">place</label>
-                                        <input type="text" id="state" class="form-control"
-                                            placeholder="place" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="state" class="form-label">Upload Your Property Image(.jpeg/.png/.pdf)</label>
-                                        <input type="file" id="state" class="form-control" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="lastName" class="form-label">Whatsapp Number</label>
-                                        <input type="number" class="form-control" id="number" placeholder="Number">
-                                    </div>
-                                   <div class="col-12 mt-5 d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-prime">Get Now</button>
-                                    </div>
+        <section class="main-section container">
+            <!-- Section 1: Enrollment Form - full width box -->
+            <div class="row g-4">
+                <div class="col-12 col-md-12">
+                    <div class="card p-4 enroll-form-card">
+                        <h2 class="form-header">Get <span class="highlight">Your Vaastu</span></h2>
+                        <form id="enrollmentForm" enctype="multipart/form-data">
+                            <div class="row g-3 mt-2">
+                                <div class="col-12 col-md-6">
+                                    <label for="firstName" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Full Name">
                                 </div>
-                            </form>
-                        </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="place" class="form-label">Place</label>
+                                    <input type="text" id="place" name="place" class="form-control" placeholder="Place" />
+                                </div>
+                                <div class="col-6">
+                                    <label for="propertyImage" class="form-label">Upload Your Property Image (.jpeg/.png/.pdf)</label>
+                                    <input type="file" id="propertyImage" name="propertyImage" class="form-control" accept=".jpg,.jpeg,.png,.pdf" />
+                                </div>
+                                <div class="col-6">
+                                    <label for="whatsapp" class="form-label">WhatsApp Number</label>
+                                    <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="Number" pattern="[0-9+ ]{7,}" />
+                                </div>
+                                <div class="col-12 mt-3 d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-prime">Get Now</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
                 </div>
             </div>
-        </section>
-        <section>
-            
+
+            <!-- Section 2: About Card - full width box -->
+            <div class="row g-4 mt-4 pt-3">
+                <div class="col-12 col-md-12">
+                    <div class="vasthu-class-card text-center">
+                        <h2 class="vasthu-heading">About Vaastu Class</h2>
+                        <p>Vastu (or Vastu Shastra) is the ancient Indian science of architecture and space design, which guides how buildings, homes, and rooms should be constructed and arranged to create harmony with nature and cosmic energies.</p>
+                        <div class="d-flex justify-content-center mt-3">
+                            <a class="btn btn-prime" href="vastuclass.html">Get Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </section>
-     <!-- membership section -->
+
+    <!-- membership section -->
     <section class="membership-section mt-5">
         <div class="container">
             <div class="row align-items-center">
@@ -491,67 +310,64 @@
             </div>
         </div>
 
-    <footer class="footer-section position-relative mt-5">
-        <!-- <video class="footer-bg-video" autoplay loop muted playsinline>
-                <source src="assets/videos/footer-bg.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video> -->
-        <div class="footer-overlay"></div>
-        <div class="container py-5 position-relative">
-            <div class="row text-white">
-                <!-- Column 1: Logo & Paragraph -->
-                <div class="col-md-3 mb-4 mb-md-0 d-flex flex-column align-items-md-start align-items-center">
-                    <img src="assets/images/logo.png" alt="Guruji Logo" class="footer-logo mb-3" style="width: 170px;">
-                    <p class="footer-desc text-center text-md-start">Guiding you to inner peace and cosmic wisdom
-                        through astrology and spirituality.</p>
-                </div>
-                <!-- Column 2: Links -->
-                <div class="col-md-3 mb-4 mb-md-0">
-                    <h5 class="footer-heading">quick links</h5>
-                    <ul class="footer-list">
-                        <li><a href="#">about guruji</a></li>
-                        <li><a href="#">guruji Ahram</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Guruji prediction</a></li>
-                        <li><a href="#">Classes</a></li>
-                        <li><a href="#">Shop</a></li>
-                    </ul>
-                </div>
-                <!-- Column 3: Links -->
-                <div class="col-md-3 mb-4 mb-md-0">
-                    <h5 class="footer-heading">Our Services</h5>
-                    <ul class="footer-list">
-                        <li><a href="#">Astrology</a></li>
-                        <li><a href="#">numerology</a></li>
-                        <li><a href="#">Occult Culture</a></li>
-                        <li><a href="#">prashanna/predictions</a></li>
-                        <li><a href="#">Dosha Parihara</a></li>
-                        <li><a href="#">Vaastu</a></li>
-                    </ul>
-                </div>
-                <!-- Column 4: Get in Touch -->
-                <div class="col-md-3">
-                    <h5 class="footer-heading">Get in Touch</h5>
-                    <ul class="footer-contact">
-                        <li><i class="bi bi-geo-alt"></i>Jyothipeedam, Bustop, 43 & 44, Near, Rayakotta Rd,
-                            Chenathur, Tamil Nadu 635109</li>
-                        <li><i class="bi bi-envelope"></i> <a href="mailto:info@guruji.com">grjihosur@gmail.com</a>
-                        </li>
-                        <li><i class="bi bi-telephone"></i> <a href="tel:+919876543210">99931 99903</a></li>
-                    </ul>
+        <footer class="footer-section position-relative mt-5">
+            <div class="footer-overlay"></div>
+            <div class="container py-5 position-relative">
+                <div class="row text-white">
+                    <!-- Column 1: Logo & Paragraph -->
+                    <div class="col-md-3 mb-4 mb-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <img src="assets/images/logo.png" alt="Guruji Logo" class="footer-logo mb-3"
+                            style="width: 170px;">
+                        <p class="footer-desc text-center text-md-start">Guiding you to inner peace and cosmic wisdom
+                            through astrology and spirituality.</p>
+                    </div>
+                    <!-- Column 2: Links -->
+                    <div class="col-md-3 mb-4 mb-md-0">
+                        <h5 class="footer-heading">quick links</h5>
+                        <ul class="footer-list">
+                            <li><a href="#">about guruji</a></li>
+                            <li><a href="#">guruji Ahram</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Guruji prediction</a></li>
+                            <li><a href="#">Classes</a></li>
+                            <li><a href="#">Shop</a></li>
+                        </ul>
+                    </div>
+                    <!-- Column 3: Links -->
+                    <div class="col-md-3 mb-4 mb-md-0">
+                        <h5 class="footer-heading">Our Services</h5>
+                        <ul class="footer-list">
+                            <li><a href="#">Astrology</a></li>
+                            <li><a href="#">numerology</a></li>
+                            <li><a href="#">Occult Culture</a></li>
+                            <li><a href="#">prashanna/predictions</a></li>
+                            <li><a href="#">Dosha Parihara</a></li>
+                            <li><a href="#">Vaastu</a></li>
+                        </ul>
+                    </div>
+                    <!-- Column 4: Get in Touch -->
+                    <div class="col-md-3">
+                        <h5 class="footer-heading">Get in Touch</h5>
+                        <ul class="footer-contact">
+                            <li><i class="bi bi-geo-alt"></i>Jyothipeedam, Bustop, 43 & 44, Near, Rayakotta Rd,
+                                Chenathur, Tamil Nadu 635109</li>
+                            <li><i class="bi bi-envelope"></i> <a href="mailto:info@guruji.com">grjihosur@gmail.com</a>
+                            </li>
+                            <li><i class="bi bi-telephone"></i> <a href="tel:+919876543210">99931 99903</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container position-relative">
-            <hr class="footer-hr">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center py-2">
-                <div class="footer-copyright text-start w-100 w-md-auto mb-2 mb-md-0">&copy; 2024 Guruji. All rights
-                    reserved.</div>
-                <div class="footer-design text-end w-100 w-md-auto">Website designed by <a href="https://brinit.in/"
-                        target="_blank" class="footer-designer">Brin'IT</a></div>
+            <div class="container position-relative">
+                <hr class="footer-hr">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center py-2">
+                    <div class="footer-copyright text-start w-100 w-md-auto mb-2 mb-md-0">&copy; 2024 Guruji. All rights
+                        reserved.</div>
+                    <div class="footer-design text-end w-100 w-md-auto">Website designed by <a href="https://brinit.in/"
+                            target="_blank" class="footer-designer">Brin'IT</a></div>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
     </section>
 
     <!-- WhatsApp Floating Icon & Popup -->

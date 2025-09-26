@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Video Control</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+    }
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+    #video-section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #video-section video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <section style="background:#111; color:white;">Scroll Down</section>
+
+  <section id="video-section">
+    <video id="myVideo" preload="auto" muted playsinline>
+      <source src="assets/videos/Luxury_Watch_Video_Generation.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  <section style="background:#222; color:white;">Next Section</section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const video = document.getElementById("myVideo");
+
+    // Ensure video is ready to be scrubbed
+    video.load();
+
+    // Wait for video metadata (duration)
+    video.addEventListener("loadedmetadata", () => {
+      let duration = video.duration;
+
+      gsap.to(video, {
+        currentTime: duration, // scrub through video
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#video-section",
+          start: "top top",
+          end: "+=1000", // Animate over a scroll distance equal to the viewport height
+          scrub: 0.2, // Smoother scrubbing with less delay
+          pin: true, // stick while scrolling
+        }
+      });
+    }, { once: true });
+  </script>
+</body>
+</html>

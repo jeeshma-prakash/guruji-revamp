@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>About</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <!-- Font Awesome 5.15.4 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <!-- Custom Testimonials CSS -->
+</head>
+<style>
+    .gallery {
+        position: relative;
+        width: 100%;
+        height: 70vh !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: url(assets/images/Untitled\ design.png) center;
+    }
+
+    .image-stack {
+        position: relative;
+        width: 400px;
+        height: 550px;
+
+    }
+
+    .image-stack img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    .img-0 {
+        width: 250px !important;
+        height: 350px !important;
+    }
+
+    .img-3 {
+        width: 350px !important;
+        height: 450px !important;
+    }
+
+    .img-2 {
+        width: 240px !important;
+        height: 340px !important;
+    }
+
+    .image-stack img.center {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 9;
+    }
+
+    .class-hero {
+        position: relative;
+        width: 100%;
+        min-height: 550px;
+        background: url('assets/images/grji-banner-home.png') no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .class-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(40, 30, 20, 0.55);
+        z-index: 1;
+    }
+
+    .class-hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        width: 100%;
+    }
+
+    .class-hero-title {
+        font-size: 4rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        margin-bottom: 0;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .class-hero-content p {
+        font-size: 2rem ;
+        color: rgba(255, 255, 255, 0.596);
+        padding-top: 1rem;
+
+
+    }
+
+    @media (max-width: 600px) {
+        .class-hero {
+            min-height: 480px;
+            background: url(assets/images/about-img-3.png) no-repeat center center/cover;
+        }
+
+        .class-hero-title {
+            font-size: 2rem;
+        }
+        .class-hero-content p {
+        font-size: 1rem ;
+        }
+        .img-2,.img-3{
+            display: none;
+        }
+    }
+
+    .about-content {
+        text-align: justify;
+    }
+
+    .about-content h3 {
+        font-size: 2rem !important;
+        font-weight: 700;
+        color: var(--primary-color);
+    }
+
+    .about {
+        font-size: 3rem !important;
+        font-weight: 700;
+        color: var(--primary-color);
+    }
+
+    .ast_testimonial_wrapper {
+        /* background: #fff; */
+        padding: 70px 0;
+    }
+
+    .ast_heading h1 {
+        font-size: clamp(1.75rem, 2.5vw + 1.2rem, 3rem);
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        line-height: 1.2;
+        text-transform: capitalize;
+    }
+
+    .ast_heading h1 span {
+        color: #D35400;
+    }
+
+    .ast_heading p {
+        text-align: center;
+        color: #444;
+        margin-bottom: 40px;
+        font-size: clamp(1rem, 1vw + 0.8rem, 1.2rem);
+    }
+
+    .ast_testimonials_slider {
+        margin: 0 auto;
+    }
+
+    .ast_testimonials_slider_box {
+        background: #fcfaf7;
+        border-radius: 18px;
+        box-shadow: 0 2px 24px rgba(0, 0, 0, 0.10);
+        padding: 40px 30px 30px 30px;
+        margin: 15px 0;
+        text-align: center;
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: box-shadow 0.2s;
+    }
+
+    .ast_testimonials_slider_box a {
+        text-decoration: none;
+        color: orangered;
+    }
+
+    .ast_testimonials_slider_box_text p {
+        font-size: clamp(1rem, 0.7vw + 0.9rem, 1.18rem);
+        color: #444;
+        margin-bottom: 18px;
+        margin-top: 0;
+        font-style: italic;
+        line-height: 1.6;
+    }
+
+    .ast_testimonials_slider_box_text h4 {
+        font-size: clamp(1rem, 0.5vw + 0.9rem, 1.18rem);
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 0;
+        margin-top: 10px;
+        line-height: 1.3;
+        min-height: 2.6rem;
+        /* keep heading area consistent */
+        display: inline-block;
+    }
+
+    .ast_testimonials_slider_box_text h4 span {
+        font-size: clamp(0.9rem, 0.4vw + 0.8rem, 1rem);
+        color: #D35400;
+        font-weight: 400;
+        display: inline;
+        margin-left: 4px;
+    }
+
+    .owl-dots {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .owl-dot span {
+        width: 12px;
+        height: 12px;
+        background: #D35400;
+        display: block;
+        border-radius: 50%;
+        margin: 5px 4px;
+        opacity: 0.5;
+        transition: opacity 0.2s;
+    }
+
+    .owl-dot.active span {
+        opacity: 1;
+        background: #D35400;
+    }
+
+    .owl-nav {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    .owl-nav button {
+        background: #fff;
+        border: 1px solid #D35400;
+        color: #D35400;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        pointer-events: all;
+        transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .owl-nav button:hover {
+        background: #D35400;
+        border-color: #D35400;
+        color: #fff;
+    }
+
+    @media (max-width: 768px) {
+        .ast_testimonials_slider_box {
+            padding: 20px 10px;
+            min-height: 260px;
+        }
+
+        .ast_testimonials_slider_box img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .ast_heading h1 {
+            font-size: 2rem;
+        }
+
+        .owl-nav button {
+            width: 36px;
+            height: 36px;
+            font-size: 1.2rem;
+        }
+        .hide{
+            display: none;
+        }
+    }
+</style>
+
+<body>
+    <section>
+        <div class="class-hero">
+            <div class="class-hero-content">
+                <h1 class="class-hero-title">Unlock Your Cosmic Destiny!</h1>
+                <p>*Prashanna *Prediction *Occult</p>
+            </div>
+        </div>
+    </section>
+    <section class="gallery">
+        <div class="image-stack">
+            <img src="assets/images/pic__1_-removebg-preview.png" class="center">
+            <img src="assets/images/img-2.png" class="img-0">
+            <img src="assets/images/img-o.png" class="img-2">
+            <img src="assets/images/img-1.png" class="img-0">
+            <img src="assets/images/img-3.png" class="img-3">
+            <!-- <h2 class="text-center pt-5 mb-4 about">About Guruji</h2> -->
+        </div>
+    </section>
+    <section class="about-guru">
+        <div class="container">
+            <div class=" about-content ">
+                <h2 class="text-center pt-5 mb-4 about">About Guruji</h2>
+                <p class="text-center">"Hello everyone, my name is<b> Prof. M. Hari Prasad, M.A., B.Ed., Ph.D.</b> I
+                    live in Chennai. I am
+                    not the
+                    only reason for the creation of this website — we built this website as a team. None of us knew each
+                    other beforehand, we all happened to meet at a place where we went to see a great saint. It was
+                    because of that saint that we all united. He was the one who gave answers in a single line to our
+                    long-pending search. Many of us had lost direction in life, and he gave a new path and helped to
+                    make life smoother. This article is about him.<br><br>
+
+                    His name is<b> Murali Mohan</b>, but people also call him Guruji, Gurunath, or MM Ji. The reason
+                    behind
+                    these names will be understood when you read this article fully.<br>
+                <div class="row mt-5">
+                    <div class="col-lg-8">
+                        <h3 class="mb-2">His Life History</h3>
+
+                        <p> Guruji Murali Mohan was born in Hosur city on February 7, 1984, as the elder son of the
+                            couple
+                            Marappa and Rathinam. At that time, his family was very poor. Although his father owned a
+                            lorry in
+                            those days, he had two wives. Guruji Murali Mohan was the son of the first wife. Since his
+                            father
+                            mainly supported and spent for the second wife’s family, Guruji’s mother had to manage with
+                            the bare
+                            minimum for survival.</p>
+
+                        <p> Guruji’s mother was a tailor. She would wash clothes from morning till evening and run the
+                            household
+                            with that small income. On some nights, Guruji and his mother would sit together stitching
+                            clothes.
+                            When Guruji spoke about those days in one of his videos, he said:
+                            <b>“Even though we struggled for money, I was happy in those days. That happiness is
+                                something I never
+                                got again in my life, and I will never get it in the future either."</b>
+
+                            The reason for this was that during those times, his mother suddenly became bedridden. Her
+                            hands and
+                            legs stopped working, her whole body swelled, boils appeared on her shoulders that burst and
+                            oozed
+                            water, and she could not even speak properly.
+                        </p>
+                        <p> At that time, Guruji was studying in Class 2 at Sathya Sai Bala Gurukulam School in Hosur.
+                            Even
+                            though he did not receive much care from his father, he lived happily with the love and
+                            affection of
+                            his mother.
+
+                            Guruji has described this in many of his videos, saying:
+                            <b>“All that happiness changed in a single night.”</b>
+                    </div>
+                    <div class="col-lg-4 mt-5">
+                        <img src="assets/images/IMG_0721.JPG" alt="Guruji's Mother" class="img-fluid rounded-3">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mt-3">
+                        <img src="assets/images/guruji-10.jpg" alt="Guruji as a child" class="img-fluid rounded-3 hide">
+                    </div>
+                    <div class="col-lg-8">
+
+                        <p> His father tried several doctors and hospitals, but there was no improvement in his mother’s
+                            condition. Days passed, months went by, a year went on, yet nothing changed. Guruji was only
+                            six
+                            years old at that time.
+
+                            When you listen to Guruji narrating those days, your eyes fill with tears. A six-year-old
+                            boy would
+                            wake up every day at 5:00 a.m. and clean the whole house. Cleaning did not just mean
+                            sweeping — he
+                            had to pour water and wash the floors daily. The reason was that since his mother was
+                            bedridden,
+                            water and fluid that leaked from her wounds would drip on the floor. If not washed daily,
+                            the house
+                            would stink and mosquitoes and flies would swarm. So, Guruji was forced to clean the house
+                            thoroughly every day.<br><br>
+
+                            After that, following his mother’s instructions from the bed, Guruji began cooking. Once the
+                            cooking
+                            was done, with the help of neighbors, he would carry his mother to the bathroom for her
+                            morning
+                            routine, bathe her, change her clothes, put her back in bed, feed her food, then eat his own
+                            breakfast, and leave for school by 9:00 a.m.
+
+                            While describing those days, Guruji said:
+                            “I had to enter the school gate before 9:00 a.m. If I was late, they would lock the gate.
+                            Then I
+                            would have to wait outside for hours, and only after getting hit on the knuckles with a
+                            scale would
+                            they let me in. Compared to all the hard work I did at home in the morning, that beating
+                            hurt me the
+                            most.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Roots of a Resilient Soul </h3>
+                        <p>About GurujiIn his childhood during school days, the lunch bell would ring at 1:00 PM.
+                            Without a moment's hesitation, Guruji would dash from school to his house. This journey was
+                            perilous, as the route was—and still is—the busy Bangalore-Dharmapuri highway, which he had
+                            to cross to get home. Despite the danger, he made the trip daily. Upon arriving, he would
+                            check if his mother(who was ill) needed to use the restroom, serve her food, eat his own
+                            lunch, and then hurry back to school. The tight schedule demanded his return within 45
+                            minutes, when the next bell rang, making his afternoon commute a challenging and emotional
+                            ordeal. In the evening, after school, he would walk home leisurely, free from the earlier
+                            urgency, spend time conversing with his mother, and then drift off to sleep. This routine
+                            marked the start of his second year in second grade. </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="text-end">A Childhood Marked by Struggles </h3>
+                        <p>As his father, having exhausted medical options after consulting numerous doctors, turned to
+                            spiritual healers and mystics for help with his mother’s condition, various practitioners
+                            visited. They charged fees ranging from one thousand to twenty thousand rupees, yet her
+                            health remained unchanged. Each mystic attributed her ailment to black magic or a curse.
+                            Guruji witnessed this struggle closely. Since his parents had a love marriage, they lacked
+                            family support, though some relatives began visiting after noticing his mother’s
+                            deteriorating state. One relative proposed, “How much longer can we wait? Years have gone
+                            by. It’s time to consult a doctor and administer a lethal injection to end her suffering.”
+                            This suggestion sparked a heated exchange, with Guruji retorting, “You never bothered to
+                            check on us or show concern. What gives you the right to interfere? I’m the one caring for
+                            my mother, and I’ll do so until the end. No one needs to visit or meddle in our affairs,” he
+                            declared with frustration
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-lg-8">
+                        <h3 class="mb-2">Early Life Under the Shadows of Adversity
+                        </h3>
+
+                        <p> Days passed by, and as Guruji recounted his mother’s condition, he shared, "Saliva flowed
+                            continuously from my mother’s mouth, yet she lacked the strength to rise and expel it. They
+                            would place a coconut shell filled with sand beside her, where she would spit throughout the
+                            day from morning until night. Her hands and feet swelled severely, and she wept endlessly
+                            from the excruciating pain. Witnessing this, Guruji felt lost and shed tears of
+                            helplessness." During this period, Guruji’s father sought help from a mystic from
+                            Kaveripattinam in the Krishnagiri district. Guruji remembers this mystic arriving in a
+                            striking Ambassador car, a rarity back then. Upon seeing him, Guruji’s initial thought was,
+                            "Numerous individuals have deceived my father and taken his money; this man is likely
+                            another one," and he regarded him with distrust. That night, certain rituals were conducted.
+                            Amid the proceedings, the mystic abruptly raised his voice and gestured toward a location
+                            near the house. </p>
+
+                        <p> They began excavating the spot, and his accompanying disciples dug until water emerged.
+                            Eventually, they uncovered a doll bound with wires. The areas where the doll was tied
+                            corresponded to the places where Guruji’s mother felt pain. To verify this, the mystic took
+                            a needle and pricked the doll; each puncture caused Guruji’s mother to twist in pain,
+                            overwhelmed by the sensation. The ceremonies persisted, and by around 3 a.m., Guruji’s
+                            mother rested on a cot. As was his habit, Guruji lay beside her. Though skeptical of the
+                            rituals, he drifted off to sleep next to her as they continued. When he awoke the next
+                            morning, he noticed a woman standing nearby. With her back turned, her identity was unclear.
+                            Rubbing the sleep from his eyes, he peered closely. Guruji later recalled, "The figure was
+                            my mother. The mystic had performed a ritual that enabled her to stand. He chanted mantras
+                            while over twenty people sat nearby. After two years of seeing her confined to bed, her
+                            standing there was a moment of pure joy. I barely registered the others; I rushed to her,
+                            embraced her from behind, and wept, calling out ‘Mother.’ That day remains etched in my
+                            mind, unforgettable." Following this, the mystic successfully removed the black magic
+                            afflicting Guruji’s mother. From then on, Guruji felt a deep urge to master this craft and
+                            aid others facing similar hardships.</p>
+                    </div>
+                    <div class="col-lg-4 mt-4">
+                        <img src="assets/images/about-3.png" alt="Guruji's Mother" class="img-fluid rounded-3 hide ">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mt-3">
+                        <img src="assets/images/guruji-12.jpg" alt="Guruji as a child" class="img-fluid rounded-3">
+                    </div>
+                    <div class="col-lg-8 ">
+                        <h3 class="mt-4">Trials that Shaped the Journey</h3>
+
+                        <p>Time moved forward, and Guruji completed his ITI education. He later joined a local TV
+                            channel in Hosur, starting as a cameraman before transitioning to a commentator role,
+                            hosting various programs. His career advanced, leading to the opportunity to produce and
+                            host his own show, "The Third Eye," which focused on documenting supernatural occurrences.
+                            The channel entrusted him with this task, exposing him to numerous mystics and spiritual
+                            leaders. He engaged with hundreds of them and eventually launched his own local TV channel,
+                            deepening his connections with these figures. He filmed rituals, including cremation ground
+                            ceremonies, gaining insight into such practices. His childhood curiosity to learn this art
+                            found fulfillment as he studied under mystics, priests, aghoris, fortune-tellers, and other
+                            experts. His father also thrived financially, eliminating their monetary struggles, while
+                            Guruji prospered through his own ventures, lifting them out of poverty. However, the Tamil
+                            Nadu government later mandated that local TV channels pay a 5 lakh rupee deposit and monthly
+                            rent. Recognizing the channel’s insufficient revenue, Guruji decided to shut it down.
+                        </p>
+                    </div>
+                </div>
+                <!-- Testimonials Start-->
+                <section class="mt-5">
+                    <div class="ast_testimonial_wrapper ast_toppadder70 ast_bottompadder70">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="ast_heading">
+                                        <h1>What Followers <span>Says</span></h1>
+                                        <p>At Guruji, every seeker walks a unique path guided by divine wisdom. Our
+                                            devotees’ heartfelt experiences reflect the peace, clarity, and blessings
+                                            they’ve received through Guruji’s guidance. Here's what they have to say
+                                            about their spiritual journey with us</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-lg-10 col-md-12 col-sm-12 col-12 offset-lg-1 offset-md-0 offset-sm-0 offset-0">
+                                    <div class="ast_testimonials_slider" style="position:relative;">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <div class="ast_testimonials_slider_box">
+                                                    <!-- <img src="assets/images/testimonials/profile.jpg" alt="Testimonial"> -->
+                                                    <div class="ast_testimonials_slider_box_text">
+                                                        <p>Greetings to the Guru. My name is Kalaivani, and I was
+                                                            suffering greatly due to black magic. At that time, he came
+                                                            like a divine figure and resolved my issues with black magic
+                                                            <a class="modal-btn" href="testimonials.html">...read
+                                                                more</a></p>
+                                                        <h4>Kalaivani, <span></span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="ast_testimonials_slider_box">
+                                                    <!-- <img src="assets/images/testimonials/profile.jpg" alt="Testimonial"> -->
+                                                    <div class="ast_testimonials_slider_box_text">
+                                                        <p>In my lifetime, I have met hundreds of spiritual gurus in my
+                                                            spiritual quest and lost money in the process. But when I
+                                                            met him, I was 70 years old <a class="modal-btn"
+                                                                href="testimonials.html">...read more</a></p>
+                                                        <h4>Bharatji Kannan,<br> <span>Film Director, Tamil Nadu</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="ast_testimonials_slider_box">
+                                                    <!-- <img src="assets/images/testimonials/profile.jpg" alt="Testimonial"> -->
+                                                    <div class="ast_testimonials_slider_box_text">
+                                                        <p>Dr. PN. Ranghanath MD FRHS AM, Founder of Cell Rejuvenation
+                                                            Medicine (India) <a class="modal-btn"
+                                                                href="testimonials.html">...read more</a></p>
+                                                        <h4>Dr. PN. Ranghanath MD FRHS AM,<br> <span>Founder Of Cell
+                                                                Rejuvenation Medicine (India)</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="ast_testimonials_slider_box">
+                                                    <!-- <img src="assets/images/testimonials/tm2.jpg" alt="Testimonial"> -->
+                                                    <div class="ast_testimonials_slider_box_text">
+                                                        <p>I am 60 years old, and as a sannyasi, spiritual guru, and
+                                                            Varmakalai master, I have been in contact with everyone from
+                                                            ministers to kings <a class="modal-btn"
+                                                                href="testimonials.html">...read more</a></p>
+                                                        <h4>Sivayogi Sivathiru Chinthanai Selvam,<br> <span>Varmakalai
+                                                                Master</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="item">
+                                                <div class="ast_testimonials_slider_box">
+                                                    <!-- <img src="assets/images/testimonials/2.jpg" alt="Testimonial"> -->
+                                                    <div class="ast_testimonials_slider_box_text">
+                                                        <p>Eight years ago, I faced countless struggles. I had no belief
+                                                            in spirituality or things like black magic. But one night, I
+                                                            saw two dark figures in my room <a class="modal-btn"
+                                                                href="testimonials.html">...read more</a></p>
+                                                        <h4>Dr. B. Gobinath,<br> <span>BHMS</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="ast_testimonials_slider_box">
+                                                    <!-- <img src="assets/images/testimonials/3.jpg" alt="Testimonial"> -->
+                                                    <div class="ast_testimonials_slider_box_text">
+                                                        <p>In 2020, I was afflicted by black magic. Despite visiting
+                                                            many temples and performing rituals, there was no relief. My
+                                                            health deteriorated to the point of near death <a
+                                                                class="modal-btn" href="testimonials.html">...read
+                                                                more</a></p>
+                                                        <h4>My name is Aishwarya Soundararajan, <br><span>from
+                                                                Viluppuram</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="ast_testimonials_slider_box">
+                                                    <!-- <img src="assets/images/testimonials/profile.jpg" alt="Testimonial"> -->
+                                                    <div class="ast_testimonials_slider_box_text">
+                                                        <p>Greetings. I am not someone significant enough to introduce
+                                                            myself grandly. I am just one among millions, living on the
+                                                            fringes. But the person I speak of is not like that <a
+                                                                class="modal-btn" href="testimonials.html">...read
+                                                                more</a></p>
+                                                        <h4>Arumugam,<br> <span>Tenkasi</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="ast_testimonials_slider_box">
+                                                    <!-- <img src="assets/images/testimonials/4.jpg" alt="Testimonial"> -->
+                                                    <div class="ast_testimonials_slider_box_text">
+                                                        <p>My name is Sunil, and I am a yoga teacher working in
+                                                            Sarjapur, Karnataka. My native place is Hosur. My spiritual
+                                                            seeking began in 2019, and I was going through many
+                                                            spiritual <a
+                                                                class="modal-btn" href="testimonials.html">...read
+                                                                more</a></p>
+                                                        <h4>Sunil,<br> <span>Yoga Teacher</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Testimonials End-->
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3>Darker Days turns into Bright Hopes</h3>
+                        <p>Asha told Guruji everything that had happened. Guruji responded, "I know some people; I’ll
+                            give you their addresses, go and meet them." But Asha, crying, said, "My father won’t
+                            believe in all this, A Miraculous Beginning: Guruji dispelling an Evil Entity from a
+                            Distressed Household: Asha and her father were the only ones living in their house after her
+                            mother and sister had committed suicide. One day, while Asha was cooking in the kitchen, her
+                            father, who was lying in the bedroom, suddenly screamed, "Leave me alone, don’t do anything
+                            to me!" Hearing this, Asha ran to him, asking, "What happened, what happened?" He brushed it
+                            off, saying, "Nothing, dear," and left the house. Having already lost her mother and sister,
+                            Asha, in grief and anger, shouted, "Who’s in this house? Why are you doing this to my
+                            father? You killed my mother and sister, and now you’re doing something to my father. Who
+                            are you?" Challenging whatever presence was there, she said, "If you’re brave enough, do
+                            something to me instead of targeting my father!" She sat on the bed, and suddenly, she felt
+                            as if someone pushed her. She fell off the bed, and something seemed to sit on her and slap
+                            her across the face. That slap was the last thing she remembered. It was only after Guruji
+                            placed his hand on her forehead and chanted some mantras to expel something from her body
+                            that she regained consciousness.<br><br>
+                            Asha told Guruji everything that had happened. Guruji responded, "I know some people; I’ll
+                            give you their addresses, go and meet them." But Asha, crying, said, "My father won’t
+                            believe in all this, nor will he pay for it. What should I do?" With no other option, Guruji
+                            told Asha, "Alright, tell me when your father goes to work at night. I’ll come and perform
+                            the rituals." Three days later, as planned, Asha’s father went to his night job. That night,
+                            Guruji made all the necessary arrangements for the ritual. For three hours, in the presence
+                            of Asha and Guruji’s wife, he spoke with the spirit and expelled it from the house. Both
+                            Guruji’s wife and Asha, witnessing such an event for the first time, were stunned. Asha
+                            later said, "I had only seen Murali Anna as a politician, a businessman, and a hot-tempered
+                            person. That night, watching the ritual in my house, my sister (Guruji’s wife) and I were
+                            amazed. I never imagined he had such power and knowledge."</p>
+
+                    </div>
+                    <div class="col-lg-4 mt-3">
+                        <img src="assets/images/VRD_8982.JPG" alt="Guruji as a child" class="img-fluid rounded-3 hide">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="text-end">From Quiet Practice to Honoured Presence</h3>
+                        <p>However, Asha shared the incident with her relatives, who then approached Guruji. With no
+                            choice, Guruji began reading their fortunes, and they told others. Soon, at least 20 people
+                            started visiting him daily. His house was small, and unable to turn away the visitors,
+                            Guruji took loans and pawned his wife’s jewelry to build a small ashram. Many people started
+                            visiting the ashram, and Guruji decided to teach this art to others so they could benefit
+                            from it. He began conducting classes and, to date, has taught this mystical art to over
+                            2,500 disciples. Guruji has disciples across the world in various countries, and we take
+                            pride in being among them. However, even today, Guruji has not created any social media
+                            presence for himself. Only when people like us do something for him does it happen;
+                            otherwise, he doesn’t take the initiative himself. He has no interest in such things and
+                            says, "Let people come to me when they know about me. I’ll help those who come. It’s up to
+                            God to decide who should meet me and when. It’s not my job to advertise and attract people;
+                            I didn’t come here for that."
+                        </p>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-lg-12">
+                        <h3 class="mb-2">Whispers of Power Begin to Spread
+
+                        </h3>
+
+                        <p> As Guruji was leaving the house, he told Asha one thing: "Please don’t tell anyone that I
+                            did this. I performed this ritual because I saw you crying and had no other choice. I will
+                            definitely do this for people one day, but that will be when I’m 60 years old. Until then,
+                            don’t tell anyone." If Asha had listened to those words, this website might not have been
+                            created.
+                        </p>
+
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mt-5">
+                        <img src="assets/images/IMG_0329.JPG" alt="Guruji as a child" class="img-fluid rounded-3">
+                    </div>
+                    <div class="col-lg-8 ">
+                        <h3 class="mt-4">A Reputation Built on Belief
+                        </h3>
+
+                        <p>Even today, he remains a prominent businessman, engaged in real estate, construction, import,
+                            and export businesses. Yet, he continues to serve people through these rituals twice a
+                            month. From what I’ve seen, he is a genuine person. For years, we wandered from place to
+                            place, spending money to learn mysticism, spirituality, fortune-telling, and astrology,
+                            struggling to find a true guru. Guruji appeared like a divine light to guide us. Guruji
+                            Murali Mohan has received initiation from 62 gurus. It was only after he explained that we
+                            learned about the concept of initiation. Similarly, one of his disciples started a YouTube
+                            channel for him, which became the first YouTube channel for mysticism and spirituality.
+                            Others followed suit after seeing it. The king of the mystical world, Guruji has completed a
+                            PhD in fields like fortune-telling and astrology and holds many degrees. I’ve personally
+                            seen prominent mystics and politicians consult him for astrology readings. Once you approach
+                            him with a problem, you don’t need to search elsewhere for a solution. To date, he has
+                            healed hundreds of women affected by mystical ailments causing paralysis. Getting an
+                            appointment with him today is extremely difficult. With the hope that everyone may receive
+                            the blessings and grace of such a great soul, this website has been created.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <section class="py-5 service mt-5">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="section-title mb-5">
+                <h2>Guruji's Services</h2>
+                <p>Transform uncertainty into confidence with trusted astrology, vaastu, and spiritual healing guiding
+                    you toward peace, purpose, and prosperity.</p>
+            </div>
+
+            <!-- Card Grid -->
+            <div class="row g-4">
+                <!-- Card 1 (Background Image) -->
+                <div class="col-md-4">
+                    <a href="#">
+                        <div class="card-bg" style="background-image: url('assets/images/Astrologer\'s.jpeg');">
+                            <h5>Astrology</h5>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 2 (Icon Card) -->
+                <div class="col-md-4">
+                    <a href="#">
+                        <div class="card-icon">
+                            <!-- <img src="assets/images/occult science.jpeg" alt="icon"> -->
+                            <h5>Occult Science</h5>
+                            <p>Occult science, deeply rooted in ancient traditions, encompasses a mystical blend of
+                                astrology, tantra, mantra, and spiritual practices aimed at unlocking hidden knowledge
+                                and supernatural powers. </p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 3 (Background Image) -->
+                <div class="col-md-4">
+                    <a href="#">
+                        <div class="card-bg" style="background-image: url('assets/images/Numerology.jpeg');">
+                            <h5>Numerology</h5>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 4 (Icon Card) -->
+                <div class="col-md-4">
+                    <a href="#">
+                        <div class="card-icon">
+                            <!-- <img src="https://via.placeholder.com/50x50.png?text=Icon" alt="icon"> -->
+                            <h5>Dosha Parihara</h5>
+                            <p>A vital aspect of Vedic astrology, focuses on mitigating the adverse effects of planetary
+                                doshas - imbalances caused by malefic planetary alignments in an individual’s birth
+                                chart.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 5 (Background Image) -->
+                <div class="col-md-4">
+                    <a href="#">
+                        <div class="card-bg" style="background-image: url('assets/images/prasnnaparihar.jpeg');">
+                            <h5>Prashanna/Predictions</h5>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 6 (Icon Card) -->
+                <div class="col-md-4">
+                    <a href="#">
+                        <div class="card-icon">
+                            <!-- <img src="https://via.placeholder.com/50x50.png?text=Icon" alt="icon"> -->
+                            <h5>Vaastu</h5>
+                            <p>Vastu (or Vastu Shastra) is the ancient Indian science of architecture and space design,
+                                which guides how buildings, homes, and rooms should be constructed and arranged to
+                                create harmony with nature and cosmic energies.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- membership section -->
+    <section class="membership-section mt-5">
+        <div class="container ">
+            <div class="row align-items-center">
+                <!-- Right Image -->
+                <div class="col-lg-4 text-center member">
+                    <img src="assets/images/guruji-removebg-preview.png" alt="Membership"
+                        class="img-fluid membership-img">
+                </div>
+                <!-- Left Text -->
+                <div class="col-lg-8 membership-text">
+                    <h2>Join Our Spiritual Community</h2>
+                    <p>Become a member to deepen your spiritual journey with exclusive access to events, workshops, and
+                        personalized guidance from Guruji.</p>
+
+                    <!-- Membership Form Start -->
+                    <form class="membership-form" style="margin: 2rem 0;">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="firstname" placeholder="First Name"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="secondname" placeholder="Second Name"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" name="mobile" placeholder="Mobile Number"
+                                    pattern="[0-9]{10}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" class="form-control" name="dob" placeholder="Date of Birth" required>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" name="gender" required>
+                                    <option value="" disabled selected>Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-custom mt-3">Get now</button>
+                    </form>
+                    <!-- Membership Form End -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Icon & Popup -->
+    <div id="whatsapp-float">
+        <div id="whatsapp-popup" class="whatsapp-popup">Chat with us</div>
+        <a href="https://api.whatsapp.com/send?phone=919993199903&text=hello" target="_blank" id="whatsapp-link"
+            aria-label="Chat on WhatsApp">
+            <img src="assets/images/whatsapp icon.png" alt="WhatsApp" class="whatsapp-icon">
+        </a>
+    </div>
+
+   
+  
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const images = gsap.utils.toArray(".image-stack img:not(.center)");
+        const text = document.querySelector(".image-stack h2");
+
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: ".gallery",
+                start: "top top",
+                end: "+=100%",   // keep pinned until animation finishes
+                scrub: true,
+                pin: true
+            }
+        })
+            .to(images[0], { opacity: .9, scale: 1, x: -110, y: 80, zIndex: 3 })
+            .to(images[1], { opacity: .6, scale: 1, x: -260, y: 40, zIndex: 2 }, "<")
+            .to(images[2], { opacity: .9, scale: 1, x: 240, y: 90, zIndex: 3 }, "<")
+            .to(images[3], { opacity: .6, scale: 1, x: 350, y: -40, zIndex: 2 }, "<");
+            // .to(text, { opacity: 1, y: -70, ease: "power2.out" }, "<");
+    </script>
+
+    <!-- jQuery 3.7.1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Owl Carousel 2.3.4 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- Bootstrap 5.0.2 JS (with Popper) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Testimonials JS -->
+    <script>
+        $(document).ready(function () {
+            $('.ast_testimonials_slider .owl-carousel').owlCarousel({
+                loop: true,
+                margin: 30,
+                nav: true,
+                navText: [
+                    '<i class="fas fa-chevron-left"></i>',
+                    '<i class="fas fa-chevron-right"></i>'
+                ],
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                center: true,
+                responsive: {
+                    0: { items: 1 },
+                    600: { items: 1 },
+                    1000: { items: 2 }
+                }
+            });
+        });
+    </script>
+    <script>
+        // WhatsApp Popup Logic
+        const whatsappIcon = document.getElementById('whatsapp-float');
+        const whatsappPopup = document.getElementById('whatsapp-popup');
+        let popupTimeout;
+
+        function showPopup() {
+            whatsappPopup.classList.add('show');
+        }
+        function hidePopup() {
+            whatsappPopup.classList.remove('show');
+        }
+        // Show popup after 5.5 seconds
+        window.addEventListener('DOMContentLoaded', function () {
+            popupTimeout = setTimeout(showPopup, 5500);
+        });
+        // Show popup on hover
+        whatsappIcon.addEventListener('mouseenter', showPopup);
+        whatsappIcon.addEventListener('mouseleave', hidePopup);
+    </script>
+    <!-- Astrology Video Footer End -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+</body>
+
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        :root {
+            --outer-w: 150px;
+            --outer-h: 190px;
+            --adj-w: 170px;
+            --adj-h: 220px;
+            --center-w: 240px;
+            --center-h: 330px;
+            --gap: 27px;
+        }
+
+
+
+        .testimonials {
+            padding: 48px 16px;
+            text-align: center;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Stage containing the 5 images */
+        .image-stage {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            /* baseline for vertical differences */
+            gap: var(--gap);
+            margin-bottom: 28px;
+            padding: 18px 8px 6px;
+            position: relative;
+            min-height: calc(var(--center-h) + 20px);
+        }
+
+        .person {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(18, 22, 26, 0.12);
+            background: #fff;
+            flex: 0 0 auto;
+            transition: transform .35s cubic-bezier(.2, .9, .24, 1), opacity .35s, box-shadow .25s;
+            display: block;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            /* subtle white border */
+        }
+
+        .person img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* vertical-align: middle; */
+            -webkit-user-drag: none;
+        }
+
+        /* Sizes / positions by index (1..5) */
+        .image-stage .person:nth-child(1) {
+            width: var(--outer-w);
+            height: var(--outer-h);
+            opacity: .62;
+            transform: translateY(10px) scale(.95);
+            z-index: 1;
+        }
+
+        .image-stage .person:nth-child(2) {
+            width: var(--adj-w);
+            height: var(--adj-h);
+            opacity: .88;
+            transform: translateY(-12px) scale(.98);
+            z-index: 2;
+        }
+
+        .image-stage .person:nth-child(3) {
+            width: var(--center-w);
+            height: var(--center-h);
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            z-index: 3;
+        }
+
+        .image-stage .person:nth-child(4) {
+            width: var(--adj-w);
+            height: var(--adj-h);
+            opacity: .88;
+            transform: translateY(-12px) scale(.98);
+            z-index: 2;
+        }
+
+        .image-stage .person:nth-child(5) {
+            width: var(--outer-w);
+            height: var(--outer-h);
+            opacity: .62;
+            transform: translateY(10px) scale(.95);
+            z-index: 1;
+        }
+
+        /* Small hover boost */
+        .person:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 36px rgba(18, 22, 26, 0.18);
+            opacity: 1 !important;
+            z-index: 5;
+        }
+
+        /* Text area */
+        /* .testimonials .badge {
+      font-weight: 400;
+      border-radius: 999px;
+      padding: .35rem .8rem;
+      box-shadow: none;
+    } */
+        .testimonials h2 {
+            font-weight: 700;
+            font-size: 2.5rem !important;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            font-size: clamp(1.4rem, 2.2vw, 2.1rem);
+            line-height: 1.05;
+            color: var(--primary-color);
+        }
+
+        .testimonials p.sub {
+            color: #6b6f76;
+            margin: 0 auto;
+            max-width: 860px;
+            font-size: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            :root {
+                --outer-w: 100px;
+                --outer-h: 140px;
+                --adj-w: 140px;
+                --adj-h: 190px;
+                --center-w: 190px;
+                --center-h: 250px;
+                --gap: 18px;
+            }
+
+            .image-stage {
+                min-height: calc(var(--center-h) + 10px);
+            }
+        }
+
+        @media (max-width: 750px) {
+            :root {
+                --outer-w: 70px;
+                --outer-h: 80px;
+                --adj-w: 80px;
+                --adj-h: 100px;
+                --center-w: 100px;
+                --center-h: 150px;
+                --gap: 18px;
+            }
+
+            .image-stage {
+                min-height: calc(var(--center-h) + 10px);
+            }
+        }
+
+        @media (max-width: 505px) {
+            :root {
+                --outer-w: 60px;
+                --outer-h: 70px;
+                --adj-w: 70px;
+                --adj-h: 90px;
+                --center-w: 90px;
+                --center-h: 130px;
+                --gap: 13px;
+            }
+
+            .image-stage {
+                min-height: calc(var(--center-h) + 10px);
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* On very small screens: scale everything down and allow horizontal scroll */
+            .image-stage {
+                gap: 1px;
+                padding-bottom: 6px;
+                min-height: calc(var(--center-h));
+                /* overflow-x: auto; */
+                justify-content: center;
+                /* -webkit-overflow-scrolling: touch; */
+            }
+
+            .image-stage .person {
+                /* keep sizes from previous breakpoint but smaller if needed */
+                flex-shrink: 0;
+            }
+
+            /* Slightly reduce transforms to fit */
+            .image-stage .person:nth-child(2),
+            .image-stage .person:nth-child(4) {
+                transform: translateY(-8px) scale(.98);
+            }
+
+            .image-stage .person:nth-child(1),
+            .image-stage .person:nth-child(5) {
+                transform: translateY(6px) scale(.94);
+            }
+        }
+
+        .class-hero {
+            position: relative;
+            width: 100%;
+            min-height: 450px;
+            background: url('assets/images/serviceherbg.jpeg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .class-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(40, 30, 20, 0.55);
+            z-index: 1;
+        }
+
+        .class-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+        }
+
+        .class-hero-title {
+            font-size: 8rem !important;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 0;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        @media (max-width: 600px) {
+            .btn-gradient {
+                padding: 0.5rem 1.2rem;
+                font-size: 1rem;
+            }
+
+            .class-hero {
+                min-height: 180px;
+            }
+
+            .class-hero-title {
+                font-size: 2rem;
+            }
+        }
+
+          .testimonial-section {
+      background: url('https://via.placeholder.com/1600x400/87ceeb/ffffff') no-repeat center;
+      background-size: cover;
+      padding: 80px 0;
+      position: relative;
+    }
+    .testimonial {
+      background: linear-gradient(235deg, #ffffff, #f7e1b6);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 40px;
+      font-size: 15px;
+      line-height: 1.5;
+      box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+      text-align: justify !important;
+    }
+    .testimonial img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      /* margin-top: -30px; */
+      border: 3px solid #fff;
+    }
+    .author {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .role {
+      font-size: 13px;
+      color: #666;
+    }
+    @media(max-width: 768px) {
+      .testimonial {
+        margin: 20px auto;
+      }
+    }
+  
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="class-hero">
+            <div class="class-hero-content">
+                <h1 class="class-hero-title">Testimonials</h1>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials">
+        <div class="container">
+            <div class="image-stage" role="list" aria-label="Trusted leaders - testimonials images">
+                <!-- Replace the src with your images -->
+                <a class="person" href="#" role="listitem" aria-label="Person 1">
+                    <img src="assets/images/test-2.jpg" alt="Person 1">
+                </a>
+
+                <a class="person" href="#" role="listitem" aria-label="Person 2">
+                    <img src="assets/images/test-1.jpg" alt="Person 2">
+                </a>
+
+                <a class="person" href="#" role="listitem" aria-label="Person 3 - Center">
+                    <img src="assets/images/test-3.jpg" alt="Person 3">
+                </a>
+
+                <a class="person" href="#" role="listitem" aria-label="Person 4">
+                    <img src="assets/images/test-5.jpg" alt="Person 4">
+                </a>
+
+                <a class="person" href="#" role="listitem" aria-label="Person 5">
+                    <img src="assets/images/test-4.jpg" alt="Person 5">
+                </a>
+            </div>
+
+            <!-- <span class="badge  mb-2">Testimonials</span> -->
+            <h2>What followers says</h2>
+            <p class="sub">At Guruji, every seeker walks a unique path guided by divine wisdom. Our devotees’ heartfelt
+                experiences reflect the peace, clarity, and blessings they’ve received through Guruji’s guidance. Here's
+                what they have to say about their spiritual journey with us</p>
+        </div>
+    </section>
+    <section class="testimonial-section">
+    <div class="container">
+      <div class="row justify-content-center">
+
+        <!-- Column 1 -->
+        <div class="col-lg-4 d-flex flex-column align-items-center">
+          <div class="testimonial">
+            “I am 60 years old and have been a sannyasi, a varma kalai master, and in contact with everyone from ministers to kings. If someone asks me to recommend a good astrologer, saint, or mystic, I would first point to Guruji Murali Mohan. Many ministers have been consulting him on my guidance, and he predicts for such prominent figures without ever publicizing it. He is a good man.”
+            <div class="d-flex flex-row mt-2">
+            <div class="px-2">
+                 <img src="assets/images/test-4.jpg" alt="Aikisha Boyd">
+            </div >
+            <div class="d-flex flex-column "  >
+              <div class="author">Sivayogi Sivathiru Chinthanai Selvam</div>
+              <div class="role">Varma Kalai Master</div>
+            </div>
+            </div>
+          </div>
+
+           <div class="testimonial ">
+            “I am Sunil, a yoga instructor based in Sarjapur, Karnataka, with roots in Hosur. My spiritual journey ignited in 2019, prompting me to explore numerous videos and talks by spiritual gurus in search of clarity. In 2023, I discovered Guruji Murali Mohan, whose wisdom resolved all my queries. Since then, I embraced Deeksha on January 28, 2023, and pledged myself as his disciple. I remain devoted to this spiritual path and feel deeply thankful to the divine for guiding me to him and allowing me to stay near his guidance. Har Har Mahadev.”
+             <div class="d-flex flex-row mt-2">
+            <div class="px-2">
+                 <img src="assets/images/test-2.jpg" alt="Aikisha Boyd">
+            </div >
+            <div class="d-flex flex-column ">
+              
+              <div class="author">Sunil</div>
+              <div class="role">Yoga Teacher</div>
+            </div>
+          </div>
+           </div>
+        
+
+          <div class="testimonial ">
+            “Eight years ago, I faced many hardships and had no faith in spirituality or occult practices. At that time, I saw two dark figures at night that prevented me from sleeping and haunted my dreams. As a doctor, I thought I was suffering from hallucinations and sought treatment from several psychiatrists, but it was ineffective. I also visited many mystics, spending lakhs, but saw no results. Finally, through Guruji Murali Mohan’s online videos, I met him in person. Without me saying a word, he described all my problems and the hardships I faced. He provided solutions, and today, I am alive because of him. Thank you, Guruji.”
+            <div class="d-flex flex-row mt-2">
+            <div class="px-2">
+                 <img src="assets/images/test-1.jpg" alt="Aikisha Boyd">
+            </div >
+            <div class="d-flex flex-column ">
+             
+              <div class="author">Dr. B. Gobinath</div>
+              <div class="role">BHMS</div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-lg-4 d-flex flex-column align-items-center ">
+          <div class="testimonial text-center">
+            “In 2020, I was severely affected by black magic. Despite visiting many temples and performing rituals, there was no relief, and my health deteriorated to the point of near death. That’s when I was introduced to Guruji Murali Mohan . I was in a terrible state when I met him, with no money, having borrowed 1000 rupees to travel to Hosur. Guruji resolved my black magic issue without taking a single rupee. Within three months, my health was fully restored. Now, I perform in many concerts, and all my success is due to Guruji Murali Mohan. I am alive today because of him. I continue to bring others to him for help. If Guruji hadn’t helped me, I wouldn’t be alive today. I bow at the feet of my Guru .”
+            <div class="d-flex flex-row mt-2">
+            <div class="px-2">
+                 <img src="assets/images/test-3.jpg" alt="Aikisha Boyd">
+            </div >
+            <div class="d-flex flex-column ">
+              
+              <div class="author">Aishwarya Soundararajan</div>
+              <div class="role">from Villupuram</div>
+            </div>
+          </div>
+          </div>
+
+          <div class="testimonial text-center">
+            “Namaste.I am not an extraordinary individual, merely one among the countless souls poised at the edge of the shore. But the man I speak of is not like that. *Murali Mohan, one in a million, the crowned king of mysticism.* He is like a brother born with me. In a world where fake gurus use spirituality as a facade, he lives with spirituality as his body and soul, a noble person. When we think of spirituality, we think of God and the form of light. He established Jyothi Peedam as a seat for that light and serves as its leader. There is a common fear among people about mysticism, believing it to be harmful and destructive. However, Guruji Murali Mohan has researched and proven that mysticism is not wrong but created solely for the benefit of people. He provides benefits through it and teaches it to others. He resolves issues that medicine cannot solve with his mystical powers. Traveling a unique path in spirituality and mysticism, I see him as the first point on an unwritten page in the book of the spiritual empire. This is a marvelous point in spirituality.”
+            <div>
+              
+              <div class="author">Arumugam</div>
+              <div class="role">Tenkasi</div>
+            </div>
+          </div>
+
+           <div class="testimonial text-center">
+            “I am an Om Shakti devotee. I have met many people in Tamil Nadu seeking the proper methods of divine worship and siddhi practices, but none provided clear explanations. When I visited Guruji, he explained in a single day how to worship specific deities and attain siddhi, with the knowledge at his fingertips. He taught it instantly, and I was thrilled. I have never seen a guru like him in my lifetime. Thank you, Namaste.”
+             <div class="d-flex flex-row mt-2">
+            <div class="px-2">
+                 <img src="assets/images/test-5.jpg" alt="Aikisha Boyd">
+            </div >
+              
+              <!-- <div class="author">AIKISHA BOYD</div> -->
+              <!-- <div class="role">Xtreme Lashes Stylist</div> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="col-lg-4 d-flex flex-column align-items-center">
+          <div class="testimonial text-end">
+            “Namaste to the Guru. My name is Kalaivani, and I was suffering greatly due to black magic. Guruji Murali Mohan came like a divine intervention and resolved my black magic issues. If I am alive today, it is solely because of Guruji Murali Mohan, my elder brother. Jyothi Peedam is like my second home. Even now, no matter how many difficulties I face, I live with the faith that Guruji Murali Mohan is there for me, alongside my trust in God. In an era where mysticism is often exploited for money, Jyothi Peedam is the only place that speaks the truth and uses mysticism as a service to people. My entire family and I will always remain grateful. Thank you, brother.”
+            <div>
+              
+              <div class="author">Kalaivani</div>
+              <!-- <div class="role">The Last Tangle</div> -->
+            </div>
+          </div>
+
+          <div class="testimonial text-end">
+            “My name is Bharati Kannan, and I am a director in the Tamil Nadu film industry. I have directed several Tamil films, including Pannari Amman and Padavettamman, and I currently act in the serial Ethirneechal on Sun TV. I have met many saints for both my cinematic and personal matters. From my experience, 90% of the saints I met were exploiting people for money through deceitful practices. However, after meeting Guruji Murali Mohan from Hosur, I gained faith that true spiritualists still exist on this earth. His honest speech, ability to instantly discern any matter, and the power to achieve anything through mysticism make Guruji Murali Mohan truly exceptional.”
+            <div>
+              
+              <div class="author">Bharati Kannan</div>
+              <div class="role">Film Director, Tamil Nadu</div>
+            </div>
+          </div>
+
+          <div class="testimonial text-end">
+            “In my lifetime, I have met hundreds of saints in my spiritual quest and lost money in the process, with no results. When I met Guruji Murali Mohan, I was 70 years old, and despite his young age, he remains my Guru to this day. The reason is that, despite his youth, he is a spiritual genius. In an era where many saints operate as corporate figures without true knowledge, Guruji Murali Mohan lives humbly with vast knowledge.”
+            <div>
+             
+              <div class="author">Dr. P.N. Ranghanath MD FRHS AM</div>
+              <div class="role">Founder of Cell Rejuvenation Medicine (India)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+      <!-- membership section -->
+    <!-- <section class="membership-section mt-5"> -->
+        <div class="container ">
+            <div class="row align-items-center">
+                <!-- Right Image -->
+                <div class="col-lg-4 text-center member">
+                    <img src="assets/images/guruji-removebg-preview.png" alt="Membership"
+                        class="img-fluid membership-img">
+                </div>
+                <!-- Left Text -->
+                <div class="col-lg-8 membership-text">
+                    <h2>Join Our Spiritual Community</h2>
+                    <p>Become a member to deepen your spiritual journey with exclusive access to events, workshops, and
+                        personalized guidance from Guruji.</p>
+
+                    <!-- Membership Form Start -->
+                    <form class="membership-form" style="margin: 2rem 0;">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="firstname" placeholder="First Name"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="secondname" placeholder="Second Name"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" name="mobile" placeholder="Mobile Number"
+                                    pattern="[0-9]{10}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" class="form-control" name="dob" placeholder="Date of Birth" required>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" name="gender" required>
+                                    <option value="" disabled selected>Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-custom mt-3">Get now</button>
+                    </form>
+                    <!-- Membership Form End -->
+                </div>
+            </div>
+        </div>
+        </section>
+
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+</body>
+
+</html>

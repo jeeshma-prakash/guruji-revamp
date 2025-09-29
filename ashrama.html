@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guruji Ashram</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Swiper.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .slide {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .item {
+      width: 200px;
+      height: 250px;
+      position: absolute;
+      top: 80%;
+      transform: translateY(-50%);
+      border-radius: 1rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      background-position: center;
+      background-size: cover;
+      transition: all 0.7s ease-in-out;
+    }
+
+    /* Active positions */
+    .slide .item:nth-child(1),
+    .slide .item:nth-child(2) {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      transform: translateY(0);
+    }
+
+    .slide .item:nth-child(3) {
+      left: 55%;
+    }
+
+    .slide .item:nth-child(4) {
+      left: calc(55% + 220px);
+    }
+
+    .slide .item:nth-child(5) {
+      left: calc(55% + 440px);
+    }
+
+    .slide .item:nth-child(n+6) {
+      left: calc(55% + 660px);
+      opacity: 0;
+    }
+
+    /* Controls */
+    .slider-controls {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 1rem;
+      z-index: 5;
+    }
+
+    .slider-controls button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.342);
+      transition: 0.3s;
+    }
+
+    .slider-controls button:hover {
+      background: #fff;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 700px) {
+      .item {
+        width: 120px;
+        height: 160px;
+      }
+
+      .slide .item:nth-child(3) {
+        left: 50%;
+      }
+
+      .slide .item:nth-child(4) {
+        left: calc(50% + 140px);
+      }
+
+      .slide .item:nth-child(5) {
+        left: calc(50% + 280px);
+      }
+
+      .slide .item:nth-child(n+6) {
+        left: calc(50% + 420px);
+        opacity: 0;
+      }
+
+      .slider-controls button {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .class-hero {
+      position: relative;
+      width: 100%;
+      min-height: 550px;
+      background: url('assets/images/ashram-event-bg.jpeg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .class-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(40, 30, 20, 0.55);
+      z-index: 1;
+    }
+
+    .class-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+    }
+
+    .class-hero-title {
+      font-size: 7rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 0;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 2.7rem;
+      color: var(--primary-color);
+    }
+
+    .leads {
+      color: rgb(58, 58, 58);
+      margin-bottom: 5px;
+      font-size: 18px !important;
+      text-align: justify;
+    }
+
+    .ashram {
+      background: url(assets/images/Untitled\ design.png) no-repeat center center/cover;
+    }
+
+
+    @media (max-width: 600px) {
+
+      .class-hero {
+        min-height: 180px;
+      }
+
+      .class-hero-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* events */
+    .blog-section {
+      padding: 60px 0;
+    }
+
+    .blog-section h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--primary-color);
+    }
+
+    .blog-card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .blog-card-body {
+      padding: 20px;
+    }
+
+    .blog-category {
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .blog-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .blog-link {
+      font-size: 14px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: 600;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      background: #fff;
+      border: 1px solid #000;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+    }
+
+    .swiper-pagination-bullet {
+      background: #000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section>
+    <div class="class-hero">
+      <div class="class-hero-content">
+        <h1 class="class-hero-title">Guruji's Ashram</h1>
+      </div>
+    </div>
+  </section>
+  <section class=" my-5 mt-5 pt-5 ashram">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="title mb-5 text-center">About  Ashram</h2>
+          <p class="leads">August 8, 2014, saw the birth of Guruji's twins. Guruji and his family were residing at his
+            wife's mother's house at the time. Following his birth, Guruji encountered significant difficulties; he
+            participated in Hindutva-related protests, which resulted in police charges against him. Guruji rarely left
+            the house to avoid further damages. Guruji's wife found it difficult to handle the twins by herself as there
+            was no one else to assist. The ground floor was rented out, and Guruji's mother-in-law occupied the first
+            floor. A girl named Asha Rani, who was on a two-month break and in her final year of an MBA, stayed there
+            along with her Father. Since Guruji's wife found it difficult to manage twins, she would come upstairs to
+            help
+            with the babies.<br>
+
+            Prior to this, Guruji was a recognised expert on astrology, prashana/predictions, occult practice, and
+            dosha.
+            Parihara obtained a PhD in these fields, conducted a great deal of research, and published about them as
+            well,
+            but he was unable to pursue them professionally because he was working in construction and real estate at
+            the
+            time.<br>
+            Asha would now come to look after the children, and Guruji's wife would help her in exchange. Asha stopped
+            coming after that, for five day Guruji's wife managed hir kids all alone. Asha eventually appeared one day
+            when Guruji was asleep. She sat next to Guruji's wife, who chastised her for not showing up. When he heard
+            the
+            noise, Guruji woke up, She explained that she was having problems at home. As Guruji asked more questions,
+            he
+            noticed something unusual about her face something was not right, he thought.</p>
+          <p class="leads ">Guruji immediately forewarned his wife to keep her away from their children. She went on to
+            disclose that both her mother and her sister had died by suicide. The locals thought this was because of
+            some
+            ghostly activity. Asha's father was sleeping on the couch five days ago while Asha was in the kitchen
+            cooking.
+            'Don't do anything, leave me alone!' he cried in his sleep. With her mother and sister gone, now that she
+            only
+            has her father, she was concerned about what would happen to him, she became enraged, and many blamed
+            paranormal forces for it. She yelled, "Who are you?" in an attempt to confront the creature. You're where?
+            Why
+            torture my dad? Face me, if you dare! She slept on the same couch that night. She was asleep when someone
+            walked over, sat on her, and hit her in the forehead. She fell as it struck and was unable to get out until
+            daylight. She informed her father in the morning that she slept off the sofa last night. She did not reveal
+            much as she was worried that it would scare her dad off. After that, the torment continued daily lasting
+            four
+            or five days, which kept her away.She shared these experiences with the Gurujis family on the fifth day, but
+            her father disregarded them because he was an alcoholic who held a respectable government job and didn't
+            think paranormal things existed. She pushed him away, unsure of what to do.
+          </p>
+        </div>
+        <!-- <div class="col-md-6 mt-5">
+        <img src="assets/images/temple-1.png" alt="Ashram Image" class="img-fluid rounded shadow ">
+      </div> -->
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="slider-container w-100" style="aspect-ratio: 16/9;">
+        <div class="slide">
+          <div class="item" style="background-image:url('assets/images/IMG_1008.JPG');">
+          </div>
+          <div class="item" style="background-image:url('assets/images/IMG_0171.JPG');">
+          </div>
+          <div class="item" style="background-image:url('assets/images/ashram/DJV01391.JPG');">
+          </div>
+          <div class="item" style="background-image:url('assets/images/ashram/IMG_0155.JPG');">
+          </div>
+          <div class="item" style="background-image:url('assets/images/ashram/DJV01396.JPG');">
+          </div>
+        </div>
+        <!-- Controls -->
+        <div class="slider-controls">
+          <button class="prev">
+            < </button>
+              <button class="next">></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <!-- <h1 class="display-5 fw-bold mb-4">Welcome <br>To Guruji's Ashram</h1> -->
+          <p class="leads ">
+            Asha was worried since her father would not believe her and would make fun of her if she performed a pooja
+            to prevent all unnatural entities from hurting them. Guruji even recommended a few persons who could do
+            that. Guruji promised to assist her, saying he would come to her home that evening and conduct a puja.
+            However, Guruji asked her to keep this confidential from everyone. Guruji was succeeding in his career and
+            had no intention of turning this into a career.<br><br>
+            Guruji made the decision to go to Asha's residence with his wife after putting his children to sleep. Guruji
+            arranged everything, drove around, and collected everything needed for pooja. Everyone saw the paranormal
+            beings for themselves that night during the puja. Despite their insistence on participating, Guruji gave the
+            other participants strong instructions to stay away during this activity. Every evil forces were put to rest
+            that night, Asha Rani out of sheer delight told everyone, including her family, about the experience after
+            everything was resolved. From September 2014, about thirty to forty people started visiting Guruji every
+            day. People came with various problems, but Guruji couldn't serve them properly from his residence.
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <img src="assets/images/ashram/IMG_0026.JPG" alt="Museum Interior" class="rounded shadow w-100">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <img src="assets/images/ashram/IMG_0014.JPG" alt="Museum Interior" class="rounded shadow w-100">
+        </div>
+        <div class="col-lg-6">
+          <!-- <h1 class="display-5 fw-bold mb-4">Welcome <br>To Guruji's Ashram</h1> -->
+          <p class="leads ">
+            There was no denying the clear necessity for an Ashram. As a result, Guruji had to find a location as soon
+            as possible and establish an ashram. Guruji continued to look for a suitable location for it in light of
+            this. In addition, Guruji had the notion to erect a tiny temple in the location where he planned to install
+            Maragadha(Emerald) Linga Shivalingam. The temple was supposed to be inside the ground(Bhoomi) rather than on
+            it, or a pit at least ten feet deep would have to be dug. People should be able to see the Shivalingam
+            inside that pit. A temple with an area around 1,430 to 1,500 square feet, as large as a house, Ashram and a
+            Temple with a land area of roughly three to five cents.<br><br>
+            Guruji is a pencil artist as well, and he used this idea for the temple to create a basic plan. As Guruji
+            was building it, he considered how to make that temple come to life, how to design it, and how to safely
+            construct it. He was actively searching for a location. Money wasn't a problem because Guruji hails from a
+            wealthy family, but back then, it was. The difficulty at the time was that the majority of the funds were
+            blocked because of the ongoing police cases. For this reason, Guruji was looking for a good location, within
+            his budget.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="ashram">
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-12">
+          <!-- <h1 class="display-5 fw-bold mb-4">Welcome <br>To Guruji's Ashram</h1> -->
+          <p class="leads ">
+            During this time, A student named Lokeshwari called Guruji from Malaysia. Guruji had cleared a problem for
+            her and She had been his disciple since some months by now. She frequently called Guruji. "Last night, I had
+            a dream," she stated at seven in the morning. In a village, you were erecting a Shivalinga. At the time of
+            the installation, it was surrounded by Spatika flowers in a populated village. It was beneath the earth, not
+            on it. Guruji enquired if it matched and provided her a picture of his pencil drawings right away. "This is
+            what I saw in my dream, Guruji," she added. Guruji was therefore more persuaded to carry it out. There must
+            be a divine force at work if she witnessed it in her dream.<br><br>
+            One fine day, Guruji was at home and under police protection, he had police protection during this time.
+            Karthik approached Guruji and said, "Anna, I've found a place at a good rate, around 11 lakhs, and this had
+            a main road access too." In response, Guruji said, "At this time, I don't have that capacity. I'm seeking
+            for a land of 4-5 lakhs to build a temple, but 11 lakhs is more than I can handle. If you find one at a low
+            cost, let me know". Karthik left after agreeing. Ten minutes later, another man arrived to meet Guruji,
+            this time it was Thankavel, was a mechanic by profession. Guruji's family also operated a truck company, and
+            this man fixed Trucks for him. When Guruji informed him that he was building a house,Thankavel said that he
+            also desired a location like that, preferably near a road within 10-15 lakhs.
+            Recalling that Karthik had mentioned this place, Guruji promised to check with Karthik. After calling
+            Karthik, who consented to come, Thankavel asked Guruji to check out the property and said he would return in
+            the evening because he had to leave for work. Guruji agreed to check it because of his experience managing
+            large projects in real estate. That evening, Thankavel returned and expressed his liking for the 11-cent
+            plot. Thankavel and Karthik decided to register it, and they did so in ten days. Thirty days later, without
+            giving a reason, Thankavel called Guruji and urged him to sell the property immediately. When Guruji
+            questioned, "Why?" Thankavel replied that he didn't have a clear explanation but that he wanted the plot to
+            sell as soon as possible.
+            Although Guruji agreed, he became agitated due to Thankavel constant calls. Guruji emphasised that selling a
+            plot takes time, and right now, I'm working on my plan to purchase a land for myself. I'm in a rather
+            forested area on the outskirts of Hosur, wish to purchase it. Thankavel replied, "No, Guruji, I'm in a
+            hurry." He also enquired as to why he wanted a location so distant from Hosur, to which Guruji replied that
+            he required budget friendly property for a temple. Thankavel suggested that Guruji purchase his land,
+            Although his budget was excessive 11 lakhs, which Guruji couldn't afford, Thankavel asked "How much do you
+            have right now?" enquired Thankavel. Guruji mentioned five lakhs.
+            Thankavel asked Guruji to pay it as advance amount, and it was decided that Guruji would make the remaining
+            monthly payment. Even banks wouldn't give him such a loan, so Guruji questioned why Thankavel was offering
+            this. However, they scheduled a meeting for that evening and came to an agreement. The following day, Guruji
+            promised to pay 1 lakh each month, and Thankavel signed a contract for 5 lakhs. Guruji was surprised, as his
+            budget didn’t justify it, and he was unable to comprehend Thankavel's motivation or the reason Karthik's old
+            client, had sold the same property in the first place. After consulting with the Taluk office, Guruji
+            discovered a small land problem and some unfavourable reports.Thankavel learnt of this and
+            attempted to sell it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="blog-section container">
+    <h2>Our Events</h2>
+
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <!-- Blog Card 1 -->
+        <div class="swiper-slide">
+          <div class="card blog-card">
+            <img src="assets/images/1.jpg" alt="Artist 1" class="rounded shadow w-100">
+            <div class="blog-card-body">
+              <p class="blog-category">events</p>
+              <h5 class="blog-title">Certificates/convocation are awarded to students who have formally studied
+                spirituality</h5>
+              <a href="#" class="blog-link">see more →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Card 2 -->
+        <div class="swiper-slide">
+          <div class="card blog-card">
+            <img src="assets/images/2.jpg" alt="Artist 2" class="rounded shadow w-100">
+            <div class="blog-card-body">
+              <p class="blog-category">events</p>
+              <h5 class="blog-title">Students who stay at our ashram and study spirituality</h5>
+              <a href="#" class="blog-link">see more →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Card 3 -->
+        <div class="swiper-slide">
+          <div class="card blog-card">
+            <img src="assets/images/3.jpg" alt="Artist 3" class="rounded shadow w-100">
+            <div class="blog-card-body">
+              <p class="blog-category">events</p>
+              <h5 class="blog-title">The event of granting initiation before teaching spirituality</h5>
+              <a href="#" class="blog-link">see more →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Card 4 -->
+        <div class="swiper-slide">
+          <div class="card blog-card">
+            <img src="assets/images/events/6.jpg" alt="Artwork 2" class="rounded shadow w-100">
+            <div class="blog-card-body">
+              <p class="blog-category">events</p>
+              <h5 class="blog-title">The ritual of setting up a sacred pot (kalasa) and performing puja once a year</h5>
+              <a href="#" class="blog-link">see more →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <!-- Pagination -->
+      <div class="swiper-pagination "></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <!-- <h1 class="display-5 fw-bold mb-4">Welcome <br>To Guruji's Ashram</h1> -->
+          <p class="leads ">
+            Nevertheless, Guruji used eleven cents to construct a temple, Guruji intended to dig a hole and construct
+            the temple while leaving excess land free. dig a pit, install the Shiva Linga, dedicate it, and call it
+            Pachai Meni Eswarar Alayam(temple of the emerald Shivalinga). Since 10–20 people at a time didn't require a
+            lot of area, However, as word of the events spread, people flocked there, increasing the number of visitors.
+            By 2025, Ashrama's profits paid for ashrama promotional efforts like website development, Temple building,
+            donations, and ashram upgrades, annadana and newspaper advertisements etc. Every penny donated to Ashrama
+            went towards the Ashrama's welfare, infact today when we look back, every rupee spent on Ashrama was funded
+            by Ashrama itself, And the funds of the ashram were never used for other endeavours.
+            Sanatana Purana Katha, also called story telling, is organised by Ashrama. Stories about Shiva Paramatma,
+            Goddess Parvathi, Lord Ganesha, and Lord Muruga (Kartikeya) are occasionally told. Today we believe that
+            Agastya muni is present at Ashrama and the Agastyamuni Workshop is regularly held.
+            What takes place during this workshop? Whenever a temple is constructed, you require a Pratistapane Yantra
+            for the Temple Deity Prathistapana, and this workshop is where you write this Yantra. Guruji never charges
+            for the yantra writing service, while others charge for it.
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <img src="assets/images/ashram/20220612_065201.jpg" alt="Museum Interior" class="rounded shadow w-100">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <img src="assets/images/ashram/temple-1.png" alt="Museum Interior" class="rounded shadow w-100"
+            style="height: 620px;">
+        </div>
+        <div class="col-lg-6">
+          <!-- <h1 class="display-5 fw-bold mb-4">Welcome <br>To Guruji's Ashram</h1> -->
+          <p class="leads ">
+            Rituals were performed even for the sacred Ayodhya Rama temple, which is one noteworthy aspect of the
+            Agastya Muni workshop.
+            The Ayodhya Rama Ratha arrived at the ashram, performed rituals there for seven days, and then used water
+            from seven rivers—the Sindhu, Godavari, Ganga, Krishna, and others—as well as Punya Theertha from the 52
+            sacred Punya Kshetras to perform abhishekam, or religious bathing, at the Ayodhya Rama Temple for fifty
+            days. Over the years, Ashrama has seen this kind of expansion.
+            The deity Aghora Kaalidevi, a manifestation of Kaali Mata, resides in the Ashram. Over 20 years ago, Guruji
+            studied Aghori vidyas in the very own sacred place of Kashi . The Aghoris venerated this idol of Aghora
+            Kaalidevi, which originated from Kashi. Additionally, there is a 12-foot-tall, single-stone idol of
+            Bhadrakali, who is renowned for solving all problems pertaining to land disputes, marital disputes, late
+            marriage, infertility, and other issues. People bring these problems to this place, pray, and tie a Yantra
+            for them, and within six to a year, they receive dosha parihara. Additionally, payments are paid once the
+            issues are resolved, therefore no upfront money is collected.
+            Ashrama feeds a large number of people; on some days, up to 300 people would dine at the Annadana Chatra
+            (free meal hall). In addition to providing free food to individuals living below the poverty line, Chatra
+            was constructed specifically for the poor and can be used for a variety of purposes, including arranging
+            marriages, and functions. Additionally, more than 2500 people from all over the world have come to the
+            Ashram to study: Astrology, Numerology, Occult practices, Vasthu Sastra etc.
+            MLAs, ministers, and well-known movie stars from Tamil Nadu, Karnataka, and Andhra have all come here for
+            Dosha Parihara and other services. Politicians from Malaysia and Singapore also attended, in addition to
+            those from India.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- membership section -->
+    <!-- <section class="membership-section mt-5"> -->
+        <div class="container mt-5 pt-5">
+            <div class="row align-items-center">
+                <!-- Right Image -->
+                <div class="col-lg-4 text-center member">
+                    <img src="assets/images/guruji-removebg-preview.png" alt="Membership"
+                        class="img-fluid membership-img">
+                </div>
+                <!-- Left Text -->
+                <div class="col-lg-8 membership-text">
+                    <h2>Join Our Spiritual Community</h2>
+                    <p>Become a member to deepen your spiritual journey with exclusive access to events, workshops, and
+                        personalized guidance from Guruji.</p>
+
+                    <!-- Membership Form Start -->
+                    <form class="membership-form" style="margin: 2rem 0;">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="firstname" placeholder="First Name"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="secondname" placeholder="Second Name"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" name="mobile" placeholder="Mobile Number"
+                                    pattern="[0-9]{10}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" class="form-control" name="dob" placeholder="Date of Birth" required>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" name="gender" required>
+                                    <option value="" disabled selected>Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-custom mt-3">Get now</button>
+                    </form>
+                    <!-- Membership Form End -->
+                </div>
+            </div>
+        </div>
+        </section>
+         <!-- WhatsApp Floating Icon & Popup -->
+    <div id="whatsapp-float">
+        <div id="whatsapp-popup" class="whatsapp-popup">Chat with us</div>
+        <a href="https://api.whatsapp.com/send?phone=919993199903&text=hello" target="_blank" id="whatsapp-link"
+            aria-label="Chat on WhatsApp">
+            <img src="assets/images/whatsapp icon.png" alt="WhatsApp" class="whatsapp-icon">
+        </a>
+    </div>
+    <script>
+     // WhatsApp Popup Logic
+        const whatsappIcon = document.getElementById('whatsapp-float');
+        const whatsappPopup = document.getElementById('whatsapp-popup');
+        let popupTimeout;
+
+        function showPopup() {
+            whatsappPopup.classList.add('show');
+        }
+        function hidePopup() {
+            whatsappPopup.classList.remove('show');
+        }
+        // Show popup after 5.5 seconds
+        window.addEventListener('DOMContentLoaded', function () {
+            popupTimeout = setTimeout(showPopup, 5500);
+        });
+        // Show popup on hover
+        whatsappIcon.addEventListener('mouseenter', showPopup);
+        whatsappIcon.addEventListener('mouseleave', hidePopup);
+    </script>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 2500,   // 2.5 seconds
+        disableOnInteraction: false, // keeps autoplay after manual swipe
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1200: {
+          slidesPerView: 3,
+        }
+      }
+    });
+  </script>
+
+  <script>
+    const next = document.querySelector(".next");
+    const prev = document.querySelector(".prev");
+    const slide = document.querySelector(".slide");
+
+    next.addEventListener("click", () => {
+      let items = document.querySelectorAll(".item");
+      slide.appendChild(items[0]); // move first to last
+    });
+
+    prev.addEventListener("click", () => {
+      let items = document.querySelectorAll(".item");
+      slide.prepend(items[items.length - 1]); // move last to first
+    });
+
+    // Auto slide
+    let autoSlide = setInterval(() => {
+      let items = document.querySelectorAll(".item");
+      slide.appendChild(items[0]);
+    }, 5000);
+
+    function resetAuto() {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(() => {
+        let items = document.querySelectorAll(".item");
+        slide.appendChild(items[0]);
+      }, 2000);
+    }
+    next.addEventListener("click", resetAuto);
+    prev.addEventListener("click", resetAuto);
+  </script>
+
+</body>
+
+</html>
